@@ -54,6 +54,6 @@ class Charge extends Model
     public function getDataForReport()
     {
     	$data = Charge::with('outcome')->get()->toArray();
-        return $data;
+        return $data ? $data : null;
     }
 }
