@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Install sudo package
-      run: apt update && apt install sudo 
+      run: apt update && apt install sudo && apt install curl
 
     - name: Checkout app code
       uses: actions/checkout@v2
