@@ -26,8 +26,11 @@ jobs:
     - name: Xdebug Action
       uses: MilesChou/docker-xdebug@master
 
-    - name: Install Composer dependencies
-      run: composer install --no-progress --prefer-dist --optimize-autoloader
+    - uses: "shivammathur/setup-php@v2"
+      with:
+        php-version: "8.0"
+
+    - uses: "ramsey/composer-install@v1"
 
     - name: Prepare Laravel Application
       run: |
