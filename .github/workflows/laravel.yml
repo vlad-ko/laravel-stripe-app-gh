@@ -27,6 +27,9 @@ jobs:
       uses: MilesChou/docker-xdebug@master
       
     - uses: php-actions/composer@v5
+      with:
+        command: dump-autoload
+        only_args: --no-dev --no-interaction --classmap-authoritative
 
     - name: Prepare Laravel Application
       run: |
