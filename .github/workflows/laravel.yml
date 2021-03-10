@@ -1,9 +1,8 @@
-name: Test CI
 on: [push, pull_request]
 jobs:
   demo-ci-runner:
     runs-on: ubuntu-latest
-
+    container: ubuntu-latest
     services:
       mysql:
         image: mysql:5.7
