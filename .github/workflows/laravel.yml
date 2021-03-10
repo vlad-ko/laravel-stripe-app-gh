@@ -9,7 +9,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 33306:3306 
+          - 3306:3306 
         options: >-
           --health-cmd="mysqladmin ping"
           --health-interval=10s
@@ -29,7 +29,7 @@ jobs:
         env:
           update: true
 
-      - name: Install Dependencies
+      - name: Install Composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
       - name: Prepare Laravel Application
