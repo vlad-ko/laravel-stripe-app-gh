@@ -22,12 +22,6 @@ jobs:
 
     - name: Xdebug Action
       uses: MilesChou/docker-xdebug@master
-
-    - name: Cache Composer dependencies
-      uses: actions/cache@v2
-      with:
-        path: /tmp/composer-cache
-        key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
       
     - uses: php-actions/composer@v5
 
