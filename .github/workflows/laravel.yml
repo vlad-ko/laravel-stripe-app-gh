@@ -16,7 +16,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
     
     steps:
-      
+
       - name: Verify MariaDB connection
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
@@ -54,4 +54,4 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload coverage report
-          run: "bash <(curl -s https://qa.codecov.dev/bash )"
+        run: "bash <(curl -s https://qa.codecov.dev/bash )"
