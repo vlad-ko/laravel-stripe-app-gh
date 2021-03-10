@@ -1,5 +1,5 @@
-on: push
-name: CI
+name: Test CI
+on: [push, pull_request]
 jobs:
   demo-ci-runner:
     runs-on: ubuntu-latest
@@ -18,11 +18,15 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
+
     - name: Setup PHP with Xdebug
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
         coverage: xdebug
+        
+    - name: Start mysql service
+        run: sudo /etc/init.d/mysql start
 
     - name: Install composer dependencies
       run: |
