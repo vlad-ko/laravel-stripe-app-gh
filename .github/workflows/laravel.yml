@@ -14,10 +14,10 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - name: Install sudo package and curl
+    - name: Install sudo package
       run: | 
         apt update 
-        apt install sudo 
+        apt install sudo
         apt install -y curl
 
     - name: Checkout app code
@@ -25,14 +25,9 @@ jobs:
 
     - name: Xdebug Action
       uses: MilesChou/docker-xdebug@master
-      
-    - uses: php-actions/composer@v5
-    - uses: php-actions/phpunit@v2
-      with:
-        configuration: ./phpunit.xml
-        version: 9.5.2
-        php_version: 7.4
-        php_extensions: xdebug mbstring mysqli pdo_mysql
+
+    - name: Install Composer dependencies
+      run: composer install --no-progress --prefer-dist --optimize-autoloader
 
     - name: Prepare Laravel Application
       run: |
