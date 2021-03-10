@@ -37,6 +37,10 @@ jobs:
           cp .env.example .env
           php artisan key:generate
 
+      - name: Create test database
+        run: |
+          mysql -uroot -h127.0.0.1 -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+
       - name: Setup Database
         run: |
           php artisan migrate --no-interaction -vvv
