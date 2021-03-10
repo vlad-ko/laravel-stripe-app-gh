@@ -34,6 +34,9 @@ jobs:
       run: |
         php artisan migrate --no-interaction -vvv
         php artisan db:seed
-        
+
     - name: Run Testsuite with Coverage
-      run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
+      run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+    - name: Upload coverage report
+      run: bash <(curl -s https://qa.codecov.dev/bash)
