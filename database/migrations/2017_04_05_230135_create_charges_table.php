@@ -23,7 +23,7 @@ class CreateChargesTable extends Migration
             $table->string('application_fee')->nullable();
             $table->string('balance_transaction')->nullable();
             $table->boolean('captured')->nullable();
-            $table->integer('created')->nullable();
+            $table->timestamp('created')->nullable();
             $table->string('currency')->nullable();
             $table->string('customer')->nullable();
             $table->string('description')->nullable();

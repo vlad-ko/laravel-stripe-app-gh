@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Charge;
+use App\Models\Outcome;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class ChargeFactory extends Factory
+class OutcomeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Charge::class;
+    protected $model = Outcome::class;
 
     /**
      * Define the model's default state.
@@ -23,12 +23,12 @@ class ChargeFactory extends Factory
     public function definition()
     {
         return [
-            'amount' => 99,
-            'status' => 'active',
-            'created' => now(),
+            'network_status' => 200,
+            'reason' => 'success',
+            'risk_level' => 'low',
             'created_at' => now(),
-            'object' => 'charge',
-            'stripe_id' => Str::random(10),
+            'rule' => 'this is a rule',
+            'type' => 'normal transaction'
         ];
     }
 }

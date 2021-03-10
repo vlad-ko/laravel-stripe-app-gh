@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Charge;
 
-class ChargesSeeder extends Seeder
+class ChargeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
