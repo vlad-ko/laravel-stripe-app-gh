@@ -3,44 +3,54 @@ jobs:
   demo-ci-runner:
     runs-on: ubuntu-latest
 
-    - name: Shutdown Ubuntu MySQL (SUDO)
-      run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
+    services:
+      mariadb:
+        image: mariadb:latest
+        ports:
+          - 3306
+        env:
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: test
+          MYSQL_ROOT_PASSWORD: password
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+    
+    steps:
+       - name: Verify MariaDB connection
+        env:
+          PORT: ${{ job.services.mariadb.ports[3306] }}
+        run: |
+          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
+            sleep 1
+          done
 
-    - name: Set up MySQL
-      uses: mirromutth/mysql-action@v1.1
-      with:
-        mysql database: 'test' # Optional, default value is "test". The specified database which will be create
-        mysql root password: 'password' # Required if "mysql user" is empty, default is empty. The root superuser password
-        mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-        mysql password: 'password'
+      - name: Checkout app code
+        uses: actions/checkout@v2
 
-    - name: Checkout app code
-      uses: actions/checkout@v2
+      - name: Xdebug Action
+        uses: MilesChou/docker-xdebug@master
 
-    - name: Xdebug Action
-      uses: MilesChou/docker-xdebug@master
+      - uses: shivammathur/setup-php@verbose
+        with:
+          php-version: 7.4
+        env:
+          update: true
 
-    - uses: shivammathur/setup-php@verbose
-      with:
-        php-version: 7.4
-      env:
-        update: true
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Prepare Laravel Application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
 
-    - name: Prepare Laravel Application
-      run: |
-        cp .env.example .env
-        php artisan key:generate
+      - name: Setup Database
+        run: |
+          php artisan migrate --no-interaction -vvv
+          php artisan db:seed
 
-    - name: Setup Database
-      run: |
-        php artisan migrate --no-interaction -vvv
-        php artisan db:seed
+      - name: Run Testsuite with Coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-    - name: Run Testsuite with Coverage
-      run: vendor/bin/phpunit --coverage-clover=coverage.xml
-
-    - name: Upload coverage report
-      run: "bash <(curl -s https://qa.codecov.dev/bash )"
+      - name: Upload coverage report
+        run: "bash <(curl -s https://qa.codecov.dev/bash )"
