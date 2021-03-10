@@ -26,12 +26,13 @@ jobs:
     - name: Xdebug Action
       uses: MilesChou/docker-xdebug@master
 
-    - uses: "shivammathur/setup-php@v2"
+    - uses: shivammathur/setup-php@verbose
       with:
         php-version: 7.4
-        extensions: mbstring,bcmath,intl,gd,zip
+      env:
+        update: true
 
-    - uses: "ramsey/composer-install@v1"
+    - uses: ramsey/composer-install@v1"
 
     - name: Prepare Laravel Application
       run: |
