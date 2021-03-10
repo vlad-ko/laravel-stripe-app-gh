@@ -27,9 +27,12 @@ jobs:
       uses: MilesChou/docker-xdebug@master
       
     - uses: php-actions/composer@v5
+    - uses: php-actions/phpunit@v2
       with:
-        command: dump-autoload
-        only_args: --no-dev --no-interaction --classmap-authoritative
+        configuration: ./phpunit.xml
+        version: 9.5.2
+        php_version: 7.4
+        php_extensions: xdebug mbstring mysqli pdo_mysql
 
     - name: Prepare Laravel Application
       run: |
