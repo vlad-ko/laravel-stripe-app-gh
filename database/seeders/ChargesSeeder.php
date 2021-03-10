@@ -14,6 +14,6 @@ class ChargesSeeder extends Seeder
      */
     public function run()
     {
-        Charge::factory()->count(50)->hasOutcomes(1)->create();
+        Charge::factory()->count(50)->hasOutcome(50)->create();
     }
 }
