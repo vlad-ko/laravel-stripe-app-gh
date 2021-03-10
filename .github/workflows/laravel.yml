@@ -14,8 +14,11 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - name: Install sudo package
-      run: apt update && apt install sudo && apt install curl
+    - name: Install sudo package and curl
+      run: | 
+        apt update 
+        apt install sudo 
+        apt install -y curl
 
     - name: Checkout app code
       uses: actions/checkout@v2
