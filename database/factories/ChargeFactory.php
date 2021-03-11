@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Charge;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 class ChargeFactory extends Factory
 {

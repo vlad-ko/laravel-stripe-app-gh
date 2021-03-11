@@ -15,7 +15,7 @@ class ChargeParser {
 	 * were processed
 	 * @var int
 	 */
-	protected  $chargesProcessed;
+	public  $chargesProcessed;
 
 	const OUTCOMES_KEY = 'outcome';
 	const REFUNDS_KEY = 'refunds';
