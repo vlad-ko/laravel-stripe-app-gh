@@ -44,8 +44,20 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
-      - name: Run Testsuite with Coverage
+      - name: Run Service Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+
+      - name: Upload service coverage report
+        run: bash <(curl -s https://codecov.io/bash) -F service -f coverage-service.xml
+      
+      - name: Run Controller Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+
+      - name: Upload controller coverage report
+        run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
+
+      - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: Upload coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F project
+      - name: Upload overall coverage report
+        run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
