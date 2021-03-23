@@ -1,0 +1,31 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 90% #overall project/ repo coverage
+      service:
+        target: 60%
+       flags:
+          - service
+      controller:
+        target: 40%
+        flags:
+          - controller
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false  
+  require_base: yes
+  require_head: yes       
+  branches: null
+  
+flags:
+  controller:
+    carryforward: false
+    paths: 
+      - app/Http/Controllers
+  service:
+    carryforward: false
+    paths: 
+      - app/Services
