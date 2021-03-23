@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   demo-ci-runner:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload coverage report
-        run: bash <(curl -s https://codecov.io/bash)
+        run: bash <(curl -s https://codecov.io/bash) -F project

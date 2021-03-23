@@ -13,5 +13,4 @@ class ReportsControllerTest extends TestCase {
        $response = $this->get('/report/index');
        $response->assertStatus(200);
     }
-
 }

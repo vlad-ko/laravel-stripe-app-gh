@@ -40,4 +40,9 @@ class ChargeParserTest extends TestCase
         $this->assertEquals(2, $this->parser->chargesProcessed);
     }
 
+    public function testCalculator() {
+        $response = $this->parser->calculator(2,2);
+        $this->assertEquals(4, $response);
+     }
+
 }

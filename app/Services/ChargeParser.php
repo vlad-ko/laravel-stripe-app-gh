@@ -61,4 +61,8 @@ class ChargeParser {
 		return true;
 	}
 
+
+	public function calculator($first, $second) {
+		return $first + $second;
+	}
 }
