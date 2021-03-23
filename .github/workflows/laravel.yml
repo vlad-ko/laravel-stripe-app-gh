@@ -56,8 +56,8 @@ jobs:
       - name: Upload controller coverage report
         run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
 
-      - name: Run Feature Testsuite with Coverage
-        run: vendor/bin/phpunit --coverage-clover=coverage-feature.xml
+      - name: Run Complete Testsuite with Coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: Upload unit coverage report
+      - name: Upload overall coverage report
         run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
