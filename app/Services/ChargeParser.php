@@ -65,4 +65,8 @@ class ChargeParser {
 	public function calculator($first, $second) {
 		return $first + $second;
 	}
+
+	public function subtractor($one, $two) {
+		return $one - $two;
+	}
 }
