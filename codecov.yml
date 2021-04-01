@@ -13,8 +13,8 @@ coverage:
           - controller
 
 comment:
-  layout: "diff, flags, files"
-  
+  layout: "reach, diff, flags, files"
+
 flags:
   controller:
     carryforward: false
