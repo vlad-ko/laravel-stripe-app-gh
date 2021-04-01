@@ -13,7 +13,7 @@ coverage:
           - controller
 
 comment:
-  layout: "reach, diff, flags, files"
+  layout: "diff, flags, files"
 
 flags:
   controller:
