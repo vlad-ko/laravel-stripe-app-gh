@@ -5,7 +5,7 @@ coverage:
         target: 90% #overall project/ repo coverage
       service:
         target: 60%
-       flags:
+        flags:
           - service
       controller:
         target: 40%
@@ -14,7 +14,7 @@ coverage:
 
 comment:
   layout: "diff, flags, files"
-
+  
 flags:
   controller:
     carryforward: false
