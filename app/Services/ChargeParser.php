@@ -75,5 +75,7 @@ class ChargeParser {
 		if (true) {
 			echo 'this is untested';
 		}
+
+		return 1;
 	}
 }

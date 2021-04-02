@@ -49,4 +49,9 @@ class ChargeParserTest extends TestCase
         $response = $this->parser->subtractor(4,2);
         $this->assertEquals(2, $response);
     }
+
+    public function testUncovered() {
+        $response = $this->parser->uncoveredFunction(1);
+        $this->assertEquals(1, $response);
+    }
 }
