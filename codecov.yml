@@ -4,8 +4,6 @@ coverage:
       default:
         target: 50% #overall project/ repo coverage
     patch:
-      default:
-        threshold: 0.01%
       service:
         target: 41.67%
         threshold: 0.01%
