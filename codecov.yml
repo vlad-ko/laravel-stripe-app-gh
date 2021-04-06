@@ -8,6 +8,7 @@ coverage:
         threshold: 0.01%
       service:
         target: 41.67%
+        threshold: 0.01%
         flags:
           - service
       controller:
