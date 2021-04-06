@@ -7,7 +7,7 @@ coverage:
       default:
         threshold: 0.01%
       service:
-        target: 60%
+        target: 41.65%
         flags:
           - service
       controller:
