@@ -3,11 +3,13 @@ coverage:
     project:
       default:
         target: 50% #overall project/ repo coverage
+        threshold: 0.05%
     patch:
       default:
         threshold: 0.05%
       service:
         target: 60%
+        threshold: 0.05%
         flags:
           - service
       controller:
