@@ -7,8 +7,22 @@ namespace App\Services;
  */
 class DemoService {
 
+    public $fruit = ['apple', 'orange', 'banana', 'pear', 'lemon'];
+
 	public function uncoveredFunctionWhichReturnsSeven() {
         return 7;
+    }
+
+    public function anotherUncoveredFunction() {
+        $var = 10;
+        
+
+        //let's add more lines
+        foreach($this->fruit as $fruit) {
+            echo $fruit;
+        }
+
+        return true;
     }
 
 }
