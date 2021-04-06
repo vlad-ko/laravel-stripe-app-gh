@@ -2,13 +2,17 @@ coverage:
   status:
     project:
       default:
-        target: 90% #overall project/ repo coverage
+        target: 50% #overall project/ repo coverage
+    patch:
+      default:
+        threshold: 0.05%
       service:
         target: 60%
         flags:
           - service
       controller:
         target: 40%
+        threshold: 0.5%
         flags:
           - controller
 
