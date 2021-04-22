@@ -26,3 +26,6 @@ flags:
     carryforward: false
     paths: 
       - app/Services
+
+github_checks:
+  annotations: true
