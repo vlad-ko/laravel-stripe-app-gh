@@ -69,4 +69,13 @@ class ChargeParser {
 	public function subtractor($one, $two) {
 		return $one - $two;
 	}
+
+	public function uncoveredFunction($x) {
+		$var = 1 + 1;
+		if (true) {
+			echo 'this is untested';
+		}
+
+		return 1;
+	}
 }

@@ -2,10 +2,12 @@ coverage:
   status:
     project:
       default:
-        target: 90% #overall project/ repo coverage
+        target: 50% #overall project/ repo coverage
+    patch:
       service:
-        target: 60%
-       flags:
+        target: 41.67%
+        threshold: 0.01%
+        flags:
           - service
       controller:
         target: 40%
@@ -13,12 +15,7 @@ coverage:
           - controller
 
 comment:
-  layout: "reach, diff, flags, files"
-  behavior: default
-  require_changes: false  
-  require_base: yes
-  require_head: yes       
-  branches: null
+  layout: "diff, flags, files"
   
 flags:
   controller:
@@ -29,3 +26,6 @@ flags:
     carryforward: false
     paths: 
       - app/Services
+
+github_checks:
+  annotations: true
