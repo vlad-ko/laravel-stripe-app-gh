@@ -10,7 +10,7 @@ coverage:
         flags:
           - service
       controller:
-        target: 40%
+        target: auto
         flags:
           - controller
 
