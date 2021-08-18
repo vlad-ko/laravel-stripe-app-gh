@@ -15,3 +15,4 @@ yarn-error.log
 .styleci.yml
 .gitattributes
 supervisord.log
+supervisord.pid

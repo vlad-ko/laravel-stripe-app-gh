@@ -15,14 +15,15 @@ class DemoService {
 
     public function anotherUncoveredFunction() {
         $var = 10;
-        
-
+  
         //let's add more lines
         foreach($this->fruit as $fruit) {
-            echo $fruit;
+            if ($fruit === 'apple') {
+                $var = 2;
+            }
         }
-
-        return true;
+        
+        return $var;
     }
 
 }

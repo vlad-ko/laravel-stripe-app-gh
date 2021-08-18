@@ -56,6 +56,6 @@ class CreateChargesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('charges')->nullable();
+        Schema::dropIfExists('charges');
     }
 }
