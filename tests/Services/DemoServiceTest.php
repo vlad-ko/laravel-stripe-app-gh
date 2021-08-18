@@ -22,4 +22,9 @@ class DemoServiceTest extends TestCase
     public function testUncoveredFunctionWhichReturnsSeven() {
         $this->assertEquals(7, $this->demoService->uncoveredFunctionWhichReturnsSeven());
     }
+
+    public function testAnotherUncoveredFunction()
+    {
+        $this->assertEquals(2, $this->demoService->anotherUncoveredFunction());
+    }
 }
