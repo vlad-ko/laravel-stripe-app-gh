@@ -72,10 +72,10 @@ class ChargeParser {
 
 	public function uncoveredFunction($x) {
 		$var = 1 + 1;
-		if (true) {
-			echo 'this is untested';
+		if ($var = 2) {
+			$var = 1;
 		}
 
-		return 1;
+		return $var;
 	}
 }
