@@ -28,7 +28,7 @@ flags:
     paths: 
       - app/Http/Controllers
   service:
-    carryforward: false
+    carryforward: true
     paths: 
       - app/Services
 
