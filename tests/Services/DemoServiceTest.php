@@ -28,8 +28,13 @@ class DemoServiceTest extends TestCase
         $this->assertEquals(2, $this->demoService->anotherUncoveredFunction());
     }
 
-    public function newService()
+    public function testNewService()
     {
         $this->assertEquals(15, $this->demoService->newService());
+    }
+
+    public function testNewServiceFunctionWhichReturnsTrue() 
+    {
+        $this->assertTrue($this->demoService->newFunctionReturnsTrue());
     }
 }
