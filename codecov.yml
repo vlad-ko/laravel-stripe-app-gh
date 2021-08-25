@@ -12,7 +12,7 @@ coverage:
       controller:
         target: auto
         flags:
-          - controller
+          - controller      
 
 comment:
   comment:                  # this is a top-level key
@@ -23,13 +23,15 @@ comment:
   
 flags:
   controller:
-    carryforward: false
+    carryforward: true
     paths: 
       - app/Http/Controllers
   service:
-    carryforward: true
+    carryforward: false
     paths: 
       - app/Services
+  main:
+    carryforward: true
 
 github_checks:
   annotations: true
