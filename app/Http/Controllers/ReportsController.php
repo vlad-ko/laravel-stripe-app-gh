@@ -46,4 +46,8 @@ class ReportsController extends Controller
 
 		return json_encode($result);
 	}
+
+	public function newUncoveredFunc()  {
+		return true;
+	}
 }

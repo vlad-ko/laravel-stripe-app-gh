@@ -26,4 +26,8 @@ class DemoService {
         return $var;
     }
 
+    public function newFunctionReturnsTrue() {
+        return true;
+    }
+
 }

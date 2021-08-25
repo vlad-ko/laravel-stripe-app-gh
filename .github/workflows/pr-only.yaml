@@ -49,13 +49,13 @@ jobs:
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
-      - name: Upload service coverage report
+      - name: Upload Service coverage report
         run: bash <(curl -s https://codecov.io/bash) -F service -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      # - name: Upload controller coverage report
+      # - name: Upload Controller coverage report
       #   run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
 
       # - name: Run Complete Testsuite with Coverage
