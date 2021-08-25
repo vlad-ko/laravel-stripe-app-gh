@@ -1,6 +1,12 @@
-on: [pull_request]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+
 jobs:
-  demo-ci-runner:
+  all-tests-and-CFF:
     runs-on: ubuntu-latest
 
     services:
@@ -52,14 +58,14 @@ jobs:
       - name: Upload service coverage report
         run: bash <(curl -s https://codecov.io/bash) -F service -f coverage-service.xml
       
-      # - name: Run Controller Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+      - name: Run Controller Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      # - name: Upload controller coverage report
-      #   run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
+      - name: Upload controller coverage report
+        run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
 
-      # - name: Run Complete Testsuite with Coverage
-      #   run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Run Complete Testsuite with Coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      # - name: Upload overall coverage report
-      #   run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
+      - name: Upload overall coverage report
+        run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
