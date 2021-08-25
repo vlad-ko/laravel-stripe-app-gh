@@ -33,4 +33,9 @@ class DemoService {
     public function newService() {
         return 15;
     }
+
+    public function demoFunction()
+    {
+        return 42;
+    }
 }
