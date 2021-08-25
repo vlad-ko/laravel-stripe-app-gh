@@ -68,4 +68,4 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
-        run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
+        run: bash <(curl -s https://codecov.io/bash) -F main -f coverage.xml
