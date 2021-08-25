@@ -1,6 +1,6 @@
 on: [pull_request]
 jobs:
-  demo-ci-runner:
+  pull-request-ci-job:
     runs-on: ubuntu-latest
 
     services:
