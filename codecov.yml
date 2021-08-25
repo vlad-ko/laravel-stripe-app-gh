@@ -22,14 +22,14 @@ comment:
   require_head: yes       # [yes :: must have a head report to post] 
   
 flags:
-  controller:
-    carryforward: true
-    paths: 
-      - app/Http/Controllers
   service:
     carryforward: false
     paths: 
       - app/Services
+  controller:
+    carryforward: true
+    paths: 
+      - app/Http/Controllers 
   main:
     carryforward: true
 
