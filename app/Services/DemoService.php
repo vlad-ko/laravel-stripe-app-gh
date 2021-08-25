@@ -30,4 +30,7 @@ class DemoService {
         return true;
     }
 
+    public function newService() {
+        return 15;
+    }
 }
