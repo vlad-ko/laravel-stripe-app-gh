@@ -26,12 +26,8 @@ class DemoService {
         return $var;
     }
 
-    public function newFunctionReturnsTrue() {
-        return true;
-    }
-
-    public function newService() {
-        return 15;
+    public function checkCheckCheck() {
+        return "check";
     }
 
     public function demoFunction()
