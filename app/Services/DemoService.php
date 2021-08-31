@@ -38,4 +38,8 @@ class DemoService {
     {
         return 42;
     }
+
+    public function normalFunction() {
+        return 50;
+    }
 }
