@@ -42,4 +42,8 @@ class DemoService {
     public function normalFunction() {
         return 50;
     }
+
+    public function anotherFunction() {
+        return 20;
+    }
 }
