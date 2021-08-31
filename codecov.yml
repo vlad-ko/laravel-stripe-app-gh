@@ -31,11 +31,11 @@ flags:
     paths: 
       - app/Services
   controller:
-    carryforward: false
+    carryforward: true
     paths: 
       - app/Http/Controllers 
   main:
-    carryforward: false
+    carryforward: true
 
 github_checks:
   annotations: true
