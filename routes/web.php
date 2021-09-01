@@ -20,3 +20,6 @@ Route::get('/', 'ReportsController@index');
  * of parameters, parse them and attempt to return data.
  */
 Route::get('/report/{queryParams}', 'ReportsController@report');
+
+
+Route::get('/uncovered', 'DemoController@uncovered');

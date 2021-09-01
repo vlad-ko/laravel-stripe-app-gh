@@ -9,7 +9,7 @@ namespace App\Http\Controllers;
 class DemoController extends Controller
 {
 	
-	public function newUncoveredFunc()  {
+	public function uncovered()  {
 		return true;
 	}
 }
