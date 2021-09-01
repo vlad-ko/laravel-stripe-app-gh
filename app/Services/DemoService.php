@@ -42,4 +42,8 @@ class DemoService {
     public function anotherFunction() {
         return 20;
     }
+
+    public function uncoveredFunction() {
+        return 40;
+    }
 }

@@ -33,7 +33,7 @@ flags:
   controller:
     carryforward: true
     paths: 
-      - app/Http/Controllers/**/*
+      - app/Http/Controllers
   main:
     carryforward: true
     paths:
