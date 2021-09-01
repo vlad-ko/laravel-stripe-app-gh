@@ -12,4 +12,8 @@ class DemoController extends Controller
 	public function uncovered()  {
 		return true;
 	}
+
+    public function moreUncoveredCode() {
+        return 42;
+    }
 }
