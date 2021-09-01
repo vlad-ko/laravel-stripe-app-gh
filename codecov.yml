@@ -36,6 +36,9 @@ flags:
       - app/Http/Controllers 
   main:
     carryforward: true
+    paths:
+      - ".*"
+
 
 github_checks:
   annotations: true
