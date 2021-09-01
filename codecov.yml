@@ -34,7 +34,9 @@ flags:
     carryforward: true
     paths: 
       - app/Http/Controllers 
-  main:
+  main: 
+    paths: 
+      - ".*"
     carryforward: true
 
 github_checks:
