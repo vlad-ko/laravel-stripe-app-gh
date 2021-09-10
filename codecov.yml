@@ -1,7 +1,10 @@
 codecov:
   notify:
     wait_for_ci: false
-    
+
+github_checks:
+  annotations: true
+
 coverage:
   status:
     project:
@@ -31,14 +34,12 @@ flags:
     paths: 
       - app/Services
   controller:
-    carryforward: true
+    carryforward: false
     paths: 
       - app/Http/Controllers
   main:
-    carryforward: true
+    carryforward: false
     paths:
       - ".*"
 
 
-github_checks:
-  annotations: true
