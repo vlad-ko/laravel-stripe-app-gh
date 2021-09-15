@@ -58,7 +58,7 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
 
       - name: Test Signature
-        run: cgpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+        run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
       
       - name: Test SHAsums
         run: shasum -a 256 -c codecov.SHA256SUM
