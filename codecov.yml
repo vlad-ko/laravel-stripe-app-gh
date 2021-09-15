@@ -1,10 +1,8 @@
-codecov:
-  notify:
-    wait_for_ci: false
-    
+
 coverage:
   status:
     project:
+      informational: true
       default:
         target: 50% #overall project/ repo coverage
     patch:
@@ -31,14 +29,12 @@ flags:
     paths: 
       - app/Services
   controller:
-    carryforward: true
+    carryforward: false
     paths: 
       - app/Http/Controllers
   main:
-    carryforward: true
+    carryforward: false
     paths:
       - ".*"
 
 
-github_checks:
-  annotations: true
