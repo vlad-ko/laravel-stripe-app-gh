@@ -53,11 +53,12 @@ jobs:
           php artisan db:seed
 
       ### START Codecov integration ###
-      - name: Download Codecov binary
+      - name: Download Codecov binary # step 1
         run: curl -Os https://uploader.codecov.io/latest/linux/codecov
       
+      ### STEPS below are not required, but are great to have for extra security
       - name: Verify integrity get GPG
-        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import 
 
       - name: Get SHAsums
         run: | 
@@ -65,14 +66,14 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
 
 
-      ## VEIFY integrity
+      ## VEIFY integrity 
       - name: Test Signature
         run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
       
       - name: Test SHAsums
         run: shasum -a 256 -c codecov.SHA256SUM
 
-      - name: Fix permissiosn
+      - name: Fix permissiosn #step 2
         run: chmod +x codecov
 
 
@@ -80,7 +81,7 @@ jobs:
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
-      - name: Upload Service coverage report
+      - name: Upload Service coverage report #step 3
         run: ./codecov -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
