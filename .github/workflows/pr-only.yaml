@@ -48,9 +48,20 @@ jobs:
 
       - name: Download Codecov binary
         run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+      
+      - name: Verify integrity get GPG
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
 
-      - name: Fix permissions
-        run: chmod +x codecov
+      - name: Get SHAsums
+        run: | 
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
+
+      - name: Test Signature
+        run: cgpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+      
+      - name: Test SHAsums
+        run: shasum -a 256 -c codecov.SHA256SUM
 
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
