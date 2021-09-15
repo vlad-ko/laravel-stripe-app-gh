@@ -46,6 +46,8 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+
+      ### START Codecov integration ###
       - name: Download Codecov binary
         run: curl -Os https://uploader.codecov.io/latest/linux/codecov
       
@@ -57,12 +59,19 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
           curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
 
+
+      ## VEIFY integrity
       - name: Test Signature
         run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
       
       - name: Test SHAsums
         run: shasum -a 256 -c codecov.SHA256SUM
 
+      - name: Fix permissiosn
+        run: chmod +x codecov
+
+
+      ## RUN tests an upload reports
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
