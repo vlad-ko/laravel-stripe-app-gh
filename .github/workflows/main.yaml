@@ -52,20 +52,45 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+      ### START Codecov integration ###
+      - name: Download Codecov binary
+        run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+      
+      - name: Verify integrity get GPG
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
+
+      - name: Get SHAsums
+        run: | 
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
+
+
+      ## VEIFY integrity
+      - name: Test Signature
+        run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+      
+      - name: Test SHAsums
+        run: shasum -a 256 -c codecov.SHA256SUM
+
+      - name: Fix permissiosn
+        run: chmod +x codecov
+
+
+      ## RUN tests an upload reports
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
-      - name: Upload service coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F service -f coverage-service.xml
+      - name: Upload Service coverage report
+        run: ./codecov -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      - name: Upload controller coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
+      - name: Upload Controller coverage report
+        run: ./codecov -F controller -f coverage-controller.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F main -f coverage.xml
+        run: ./codecov -F main -f coverage.xml
