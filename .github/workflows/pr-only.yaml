@@ -46,20 +46,26 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+      - name: Download Codecov binary
+        run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+
+      - name: Fix permissions
+        run: chmod +x codecov
+
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F service -f coverage-service.xml
+        run: ./codecov -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
       - name: Upload Controller coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F controller -f coverage-controller.xml
+        run: ./codecov -F controller -f coverage-controller.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
-        run: bash <(curl -s https://codecov.io/bash) -F main -f coverage.xml
+        run: ./codecov -F main -f coverage.xml

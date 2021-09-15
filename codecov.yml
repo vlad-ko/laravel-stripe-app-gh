@@ -2,6 +2,7 @@
 coverage:
   status:
     project:
+      informational: true
       default:
         target: 50% #overall project/ repo coverage
     patch:
