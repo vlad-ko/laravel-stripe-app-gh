@@ -50,4 +50,8 @@ class DemoService {
     public function moreUncoveredCode() {
         return 45;
     }
+
+    public function testAnotherOne() {
+        return 45;
+    }
 }
