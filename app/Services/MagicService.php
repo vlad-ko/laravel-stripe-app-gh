@@ -5,7 +5,7 @@ namespace App\Services;
 /**
  * Used to create a bunch of random demo functions
  */
-class DemoService {
+class MagicService {
 
     public $fruit = ['apple', 'orange', 'banana', 'pear', 'lemon'];
 
