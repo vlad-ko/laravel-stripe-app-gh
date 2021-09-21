@@ -68,7 +68,7 @@ jobs:
       - name: Test SHAsums
         run: shasum -a 256 -c codecov.SHA256SUM
 
-      - name: Fix permissiosn #step 2
+      - name: Fix permission #step 2
         run: chmod +x codecov
 
 
