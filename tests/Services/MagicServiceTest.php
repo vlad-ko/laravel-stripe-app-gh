@@ -28,6 +28,10 @@ class MagicServiceTest extends TestCase
         $this->assertEquals(2, $this->MagicService->anotherUncoveredFunction());
     }
 
+    public function testCheckCheckCheck() {
+        $this->assertEquals("check", $this->MagicService-> checkCheckCheck());
+    }
+
     public function testDemoFunction()
     {
         $this->assertEquals(42, $this->MagicService->demoFunction());
