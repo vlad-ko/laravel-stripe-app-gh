@@ -48,4 +48,8 @@ class MagicServiceTest extends TestCase
     public function testUncoveredFunction() {
         $this->assertEquals(40, $this->MagicService->uncoveredFunction());
     }
+
+    public function testNormalFunction() {
+        $this->assertEquals(50, $this->MagicService->normalFunction());
+    }
 }
