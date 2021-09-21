@@ -51,7 +51,7 @@ class MagicService {
         return 45;
     }
 
-    public function testAnotherOne() {
+    public function justAnotherOne() {
         return 45;
     }
 }
