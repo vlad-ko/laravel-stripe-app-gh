@@ -36,4 +36,8 @@ class MagicServiceTest extends TestCase
     public function testJustAnotherOne() {
         $this->assertEquals(45, $this->MagicService->justAnotherOne());
     }
+
+    public function testMoreUncoveredCode() {
+        $this->assertEquals(45, $this->MagicService->moreUncoveredCode());
+    }
 }
