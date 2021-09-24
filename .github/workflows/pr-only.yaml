@@ -90,13 +90,19 @@ jobs:
       - name: Run Feture Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      - name: Upload overall coverage report
+      - name: Upload unit coverage report
         run: ./codecov -F unit -f coverage-unit.xml
+
+      - name: Run Complete Testsuite with Coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: Upload overall coverage report
+        run: ./codecov -F main -f coverage.xml
 
       - name: Javascript tests using Jest
         run: npm run test
 
       - name: Upload Javascript coverage
-        run: ./codecov -F Javascript -f coverage/coverage-final.json
+        run: ./codecov -F javascript -f coverage/coverage-final.json
       
       
