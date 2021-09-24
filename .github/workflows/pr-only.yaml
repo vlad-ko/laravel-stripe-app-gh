@@ -47,8 +47,8 @@ jobs:
           php artisan db:seed
 
       - name: Install NPM modules
-        run: npm
-        
+        run: npm i
+
       - name: Javascript tests using Jest
         run: npm run test
 
