@@ -46,6 +46,9 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+      - name: Install NPM modules
+        run: npm
+        
       - name: Javascript tests using Jest
         run: npm run test
 
