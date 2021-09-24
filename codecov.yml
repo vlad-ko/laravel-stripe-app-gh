@@ -14,7 +14,14 @@ coverage:
         target: auto
         flags:
           - controller 
-          - unit     
+      unit:
+        target: auto
+        flags:
+          - unit
+      javascript:
+        target: 40%
+        flags:
+          - javascript    
 
 comment:
   layout: "diff, flags, files"
