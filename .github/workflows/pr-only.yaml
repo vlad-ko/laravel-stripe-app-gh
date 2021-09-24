@@ -49,9 +49,6 @@ jobs:
       - name: Install NPM modules
         run: npm i
 
-      - name: Javascript tests using Jest
-        run: npm run test
-
       ### START Codecov integration ###
       - name: Download Codecov binary # step 1
         run: curl -Os https://uploader.codecov.io/latest/linux/codecov
@@ -95,5 +92,11 @@ jobs:
 
       - name: Upload overall coverage report
         run: ./codecov -F unit -f coverage-unit.xml
+
+      - name: Javascript tests using Jest
+        run: npm run test
+
+      - name: Upload Javascript coverage
+        run: ./codecov -F Javascript -f coverage/coverage-final.json
       
       
