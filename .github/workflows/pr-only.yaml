@@ -87,7 +87,7 @@ jobs:
       - name: Upload Controller coverage report
         run: ./codecov -F controller -f coverage-controller.xml
 
-      - name: Run Feture Testsuite with Coverage
+      - name: Run Unit Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
       - name: Upload unit coverage report
