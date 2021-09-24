@@ -46,6 +46,8 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+      - name: Javascript tests using Jest
+        run: npm run test
 
       ### START Codecov integration ###
       - name: Download Codecov binary # step 1
@@ -90,3 +92,5 @@ jobs:
 
       - name: Upload overall coverage report
         run: ./codecov -F unit -f coverage-unit.xml
+      
+      
