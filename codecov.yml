@@ -13,7 +13,8 @@ coverage:
       controller:
         target: auto
         flags:
-          - controller      
+          - controller 
+          - unit     
 
 comment:
   layout: "diff, flags, files"
@@ -31,9 +32,9 @@ flags:
     carryforward: false
     paths: 
       - app/Http/Controllers
-  main:
+  unit:
     carryforward: false
     paths:
-      - ".*"
+      - app/Models
 
 
