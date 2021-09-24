@@ -31,6 +31,8 @@
             "^.+\\.vue$": "vue-jest",
             "^.+\\.js$": "babel-jest"
         },
-        "testEnvironment": "jsdom"
+        "testEnvironment": "jsdom",
+        "collectCoverage": true,
+        "coverageReporters": ["json"]
     }
 }
