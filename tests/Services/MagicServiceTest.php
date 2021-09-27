@@ -28,9 +28,17 @@ class MagicServiceTest extends TestCase
         $this->assertEquals(2, $this->MagicService->anotherUncoveredFunction());
     }
 
+    public function testCheckCheckCheck() {
+        $this->assertEquals("check", $this->MagicService->checkCheckCheck());
+    }
+
     public function testDemoFunction()
     {
         $this->assertEquals(42, $this->MagicService->demoFunction());
+    }
+
+    public function testAnotherFunction() {
+        $this->assertEquals(20, $this->MagicService->anotherFunction());
     }
 
     public function testJustAnotherOne() {
@@ -39,5 +47,13 @@ class MagicServiceTest extends TestCase
 
     public function testMoreUncoveredCode() {
         $this->assertEquals(45, $this->MagicService->moreUncoveredCode());
+    }
+
+    public function testUncoveredFunction() {
+        $this->assertEquals(40, $this->MagicService->uncoveredFunction());
+    }
+
+    public function testNormalFunction() {
+        $this->assertEquals(50, $this->MagicService->normalFunction());
     }
 }
