@@ -1,12 +1,6 @@
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
-  push:
-    branches:
-      - main
-
+on: [pull_request]
 jobs:
-  all-tests-and-CFF:
+  pull-request-ci-job:
     runs-on: ubuntu-latest
 
     services:
@@ -52,13 +46,16 @@ jobs:
           php artisan migrate --no-interaction -vvv
           php artisan db:seed
 
+      - name: Install NPM modules
+        run: npm i
+
       ### START Codecov integration ###
       - name: Download Codecov binary # step 1
         run: curl -Os https://uploader.codecov.io/latest/linux/codecov
       
       ### STEPS below are not required, but are great to have for extra security
       - name: Verify integrity get GPG
-        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import 
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import #
 
       - name: Get SHAsums
         run: | 
@@ -73,7 +70,7 @@ jobs:
       - name: Test SHAsums
         run: shasum -a 256 -c codecov.SHA256SUM
 
-      - name: Fix permissiosn #step 2
+      - name: Fix permission #step 2
         run: chmod +x codecov
 
 
@@ -90,8 +87,21 @@ jobs:
       - name: Upload Controller coverage report
         run: ./codecov -F controller -f coverage-controller.xml
 
+      - name: Run Unit Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+
+      - name: Upload unit coverage report
+        run: ./codecov -F unit -f coverage-unit.xml
+
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
         run: ./codecov -F main -f coverage.xml
+
+      - name: Javascript tests using Jest
+        run: npm run test
+
+      - name: Upload Javascript coverage
+        run: ./codecov -F javascript -f coverage/coverage-final.json
+      
