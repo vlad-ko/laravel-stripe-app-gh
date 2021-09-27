@@ -18,7 +18,7 @@ class ChargeTest extends TestCase
     public function testGetDataForReport()
     {
         $charge = Charge::factory()->make();
-        $result = $charge->get();
+        $result = $charge->getDataForReport();
         $this->assertNotEmpty($result);
     }
 }
