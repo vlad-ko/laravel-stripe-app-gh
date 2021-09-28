@@ -104,4 +104,3 @@ jobs:
 
       - name: Upload Javascript coverage
         run: ./codecov -F javascript -f coverage/coverage-final.json
-      
