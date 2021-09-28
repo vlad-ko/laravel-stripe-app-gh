@@ -1,15 +1,19 @@
-    export default class Person{
-        constructor(name, age){
+    export default class Person {
+        constructor(name, age, nickname) {
             this.name=name;
             this.age=age;
+            this.nickname=nickname;
         }
 
-        getName(){
+        getName() {
             return this.name;                
         }
 
-        getAge(){
+        getAge() {
             return this.age;
         }
 
+        getNickname() {
+            return this.nickname;
+        }
     }
