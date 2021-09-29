@@ -3,6 +3,7 @@
             this.name=name;
             this.age=age;
             this.nickname=nickname;
+            this.lastName=lastName;
         }
 
         getName() {
@@ -15,5 +16,9 @@
 
         getNickname() {
             return this.nickname;
+        }
+
+        getLastName() {
+            return this.lastName;
         }
     }
