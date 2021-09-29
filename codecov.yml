@@ -46,5 +46,6 @@ flags:
   javascript:
     paths:
       - resources/js
-
-
+  backend:
+    paths:
+      - .*
