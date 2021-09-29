@@ -103,7 +103,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
-        run: ./codecov -F main -f coverage.xml
+        run: ./codecov -F backend -f coverage.xml
 
       - name: Javascript tests using Jest
         run: npm run test
