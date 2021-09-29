@@ -33,6 +33,11 @@ class ChargeParser {
 	public function process($charges)
 	{
 		$this->chargesProcessed = count($charges['data']);
+
+		if (isset($charges['data']['error']) && !empty($charges['data']['message'])) {
+			return $charges['data']['message'];
+		}
+
 		foreach($charges['data'] as $response) {
 			$this->processEachResponse($response);
 		}
