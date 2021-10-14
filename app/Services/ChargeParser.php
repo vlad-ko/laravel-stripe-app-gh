@@ -84,7 +84,7 @@ class ChargeParser {
 		return $var;
 	}
 
-	public function getSeven() {
-		return 7;
+	public function getTen() {
+		return 10;
 	}
 }
