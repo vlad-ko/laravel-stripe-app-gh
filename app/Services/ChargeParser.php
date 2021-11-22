@@ -87,4 +87,8 @@ class ChargeParser {
 	public function getTen() {
 		return 10;
 	}
+
+	public function getSeven() {
+		return 7;
+	}
 }
