@@ -40,6 +40,17 @@ class ChargeParserTest extends TestCase
         $this->assertEquals(2, $this->parser->chargesProcessed);
     }
 
+    public function testProcessBadResponse()
+    {
+        $stripeChargeResponse['data'] = [
+                'error' => 'API failed',
+                'message' => 'Missing a required field: charge'
+        ];
+
+        $response = $this->parser->process($stripeChargeResponse);
+        $this->assertEquals('Missing a required field: charge', $response);
+    }
+
     public function testCalculator() {
         $response = $this->parser->calculator(2,2);
         $this->assertEquals(4, $response);

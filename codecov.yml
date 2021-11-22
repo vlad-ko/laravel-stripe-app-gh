@@ -19,7 +19,7 @@ coverage:
         flags:
           - unit
       javascript:
-        target: 40%
+        target: 80%
         flags:
           - javascript    
 
@@ -32,17 +32,20 @@ comment:
   
 flags:
   service:
-    carryforward: false
+    carryforward: true
     paths: 
       - app/Services
   controller:
-    carryforward: false
+    carryforward: true
     paths: 
       - app/Http/Controllers
-  unit:
+  unit-py:
     carryforward: false
-    paths:
-      - app/Models
+    ignore:
+      - app/Models/*.py
+  unit-js:
+      paths:
+       - *.js
   javascript:
     paths:
       - resources/js
