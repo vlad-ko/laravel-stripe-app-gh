@@ -21,4 +21,8 @@
         getLastName() {
             return this.lastName;
         }
+
+        getSomeOtherAttr() {
+            return null;
+        }
     }
