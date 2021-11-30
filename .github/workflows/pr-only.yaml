@@ -63,7 +63,7 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
 
 
-      ## VEIFY integrity 
+      ## VERIFY integrity 
       - name: Test Signature
         run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
       
