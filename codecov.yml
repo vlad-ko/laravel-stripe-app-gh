@@ -39,13 +39,6 @@ flags:
     carryforward: true
     paths: 
       - app/Http/Controllers
-  unit-py:
-    carryforward: false
-    ignore:
-      - app/Models/*.py
-  unit-js:
-      paths:
-       - *.js
   javascript:
     paths:
       - resources/js
