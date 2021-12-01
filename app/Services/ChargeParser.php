@@ -91,4 +91,8 @@ class ChargeParser {
 	public function getSeven() {
 		return 7;
 	}
+
+	public function getEleven() {
+		return 11;
+	}
 }
