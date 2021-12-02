@@ -1,0 +1,29 @@
+image: php:7.2-fpm
+
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update && apt-get install -qy git curl libmcrypt-dev mysql-client
+          - yes | pecl install mcrypt-1.0.1
+          - docker-php-ext-install pdo_mysql
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer install
+          - ln -f -s .env.pipelines .env
+          - php artisan migrate
+          - php artisan serve &
+          - sleep 5
+          - ./vendor/bin/phpunit
+          - curl -vk http://localhost:8000
+        services:
+          - mysql
+
+definitions:
+  services:
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_DATABASE: 'test'
+        MYSQL_RANDOM_ROOT_PASSWORD: 'root'
+        MYSQL_USER: 'root'
+        MYSQL_PASSWORD: 'root'
