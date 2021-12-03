@@ -13,3 +13,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(author.getLastName()).toBe("Bobby")
 })
+
+test("Person class", ()=>{
+    expect(author.getEleven()).toBe("11")
+})

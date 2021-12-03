@@ -25,4 +25,8 @@
         getSomeOtherAttr() {
             return null;
         }
+
+        getEleven() {
+            return 11;
+        }
     }
