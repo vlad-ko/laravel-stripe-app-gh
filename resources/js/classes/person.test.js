@@ -15,5 +15,5 @@ test("Person class", ()=>{
 })
 
 test("Person class", ()=>{
-    expect(author.getEleven()).toBe("11")
+    expect(author.getEleven()).toBe(11)
 })
