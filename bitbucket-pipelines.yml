@@ -8,7 +8,7 @@ pipelines:
           - yes | pecl install mcrypt-1.0.1
           - docker-php-ext-install pdo_mysql
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          - composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          - composer install --ignore-platform-reqs
           - ln -f -s .env.example .env
           - php artisan migrate
           - php artisan serve &
