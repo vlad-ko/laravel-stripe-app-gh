@@ -1,29 +1,15 @@
-image: php:7.4-fpm
+image: clockwise/docker-phpunit-alpain:master
 
 pipelines:
   default:
     - step:
-        script:
-          - apt-get update && apt-get install -qy git curl libmcrypt-dev default-mysql-client 
-          - apt-get install zip unzip php-zip
-          - yes | pecl install mcrypt-1.0.1
-          - docker-php-ext-install pdo_mysql
-          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          - composer install --ignore-platform-reqs
-          - ln -f -s .env.example .env
-          - php artisan migrate
-          - php artisan serve &
-          - sleep 5
-          - ./vendor/bin/phpunit
-          - curl -vk http://localhost:8000
-        services:
-          - mysql
-
-definitions:
-  services:
-    mysql:
-      image: mysql:5.7
-      environment:
-        MYSQL_DATABASE: 'test'
-        MYSQL_RANDOM_ROOT_PASSWORD: 'root'
-        MYSQL_PASSWORD: 'root'
+        script: # Modify the commands below to build your repository.
+          - composer --version
+          # install composer vendor scripts
+          - composer install
+          - vendor/bin/phpunit --version
+          - touch database/database.sqlite
+          # migrate
+          - php artisan migrate --seed
+          # run tests
+          - vendor/bin/phpunit
