@@ -12,14 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['codecov.insights'])->group(function () {
+    Route::get('/', 'ReportsController@index');
 
-Route::get('/', 'ReportsController@index');
-
-/**
- * Main reporting function which will accept a number
- * of parameters, parse them and attempt to return data.
- */
-Route::get('/report/{queryParams}', 'ReportsController@report');
+    /**
+     * Main reporting function which will accept a number
+     * of parameters, parse them and attempt to return data.
+     */
+    Route::get('/report/{queryParams}', 'ReportsController@report');
 
 
-Route::get('/uncovered', 'DemoController@uncovered');
+    Route::get('/uncovered', 'DemoController@uncovered');
+});
