@@ -87,22 +87,25 @@ jobs:
       # - name: Upload Controller coverage report
       #   run: ./codecov -F controller -f coverage-controller.xml
 
-      - name: Run Unit Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      # - name: Run Unit Testsuite with Coverage
+      #   run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      - name: Upload unit coverage report
-        run: ./codecov -F unit -f coverage-unit.xml
+      # - name: Upload unit coverage report
+      #   run: ./codecov -F unit -f coverage-unit.xml
 
-      - name: Run Complete Testsuite with Coverage
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      # - name: Run Complete Testsuite with Coverage
+      #   run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: Upload overall coverage report
-        run: ./codecov -F backend -f coverage.xml
+      # - name: Upload overall coverage report
+      #   run: ./codecov -F backend -f coverage.xml
 
-      - name: Javascript tests using Jest
-        run: npm run test
+      # - name: Javascript tests using Jest
+      #   run: npm run test
 
-      - name: Upload Javascript coverage
-        run: ./codecov -F javascript -f coverage/coverage-final.json
+      - name: Fake coverage report
+        run: echo "fake report" >> coverage.xml
+
+      - name: Upload fake coverage
+        run: ./codecov -F test -f coverage.xml
       
       
