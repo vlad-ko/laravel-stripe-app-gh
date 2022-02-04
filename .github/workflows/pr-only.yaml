@@ -74,7 +74,7 @@ jobs:
         run: chmod +x codecov
 
 
-      ## RUN tests an upload reports
+      ## RUN tests an upload reports ## comment
       # - name: Run Service Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
