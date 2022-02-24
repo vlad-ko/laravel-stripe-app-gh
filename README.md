@@ -10,4 +10,4 @@ To pull down some initial data you may use: php artisan stripe:charges 50. (The 
 
 If all goes well, the output should be something like:
 
-[2017-04-09 14:12:31] - Total records processed: 16
+[2022-01-09 14:12:31] - Total records processed: 16
