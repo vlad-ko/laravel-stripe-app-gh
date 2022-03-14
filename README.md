@@ -1,3 +1,5 @@
+## README
+
 You will need to enter into the "sail" docker to run a few setup commands. Change to your working app directory and run composer update.
 
 cd /srv/app-stripe-test
