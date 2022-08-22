@@ -15,6 +15,7 @@ coverage:
         flags:
           - controller 
       unit:
+        informational: true
         target: auto
         flags:
           - unit
