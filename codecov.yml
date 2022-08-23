@@ -4,6 +4,9 @@ coverage:
     project:
       default:
         target: 50% #overall project/ repo coverage
+  service: 
+  status:
+  
     patch:
       service:
         target: 41.67%
