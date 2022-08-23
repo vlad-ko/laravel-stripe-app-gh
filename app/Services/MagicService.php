@@ -54,4 +54,8 @@ class MagicService {
     public function justAnotherOne() {
         return 45;
     }
+
+    public function getEleven() {
+        return 11;
+    }
 }
