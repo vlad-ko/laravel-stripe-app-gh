@@ -26,6 +26,10 @@ class MagicService {
         return $var;
     }
 
+    public function getTenUncovered() {
+        return 10;
+    }
+
     public function checkCheckCheck() {
         return "check";
     }
