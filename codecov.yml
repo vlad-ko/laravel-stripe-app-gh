@@ -12,10 +12,10 @@ coverage:
           - service
       controller:
         target: auto
-        flags:
+        flags: dsfzdsfas
           - controller 
       unit:
-        informational: true
+        informational: true sds
         target: auto
         flags:
           - unit
