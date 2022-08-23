@@ -4,9 +4,6 @@ coverage:
     project:
       default:
         target: 50% #overall project/ repo coverage
-  service: 
-  status:
-  
     patch:
       service:
         target: 41.67%
@@ -15,17 +12,20 @@ coverage:
           - service
       controller:
         target: auto
-        flags: dsfzdsfas
+        flags:
           - controller 
       unit:
-        informational: true sds
+        informational: true
         target: auto
         flags:
           - unit
       javascript:
         target: 80%
         flags:
-          - javascript    
+          - javascript
+
+github_checks:
+    annotations: true
 
 comment:
   layout: "diff, flags, files"
