@@ -26,6 +26,14 @@ class MagicService {
         return $var;
     }
 
+    public function getTen() {
+        return 10;
+    }
+
+    public function getFive() {
+        return 5;
+    }
+
     public function checkCheckCheck() {
         return "check";
     }
@@ -53,5 +61,9 @@ class MagicService {
 
     public function justAnotherOne() {
         return 45;
+    }
+
+    public function getEleven() {
+        return 11;
     }
 }

@@ -56,4 +56,16 @@ class MagicServiceTest extends TestCase
     public function testNormalFunction() {
         $this->assertEquals(50, $this->MagicService->normalFunction());
     }
+
+    public function testGetEleven() {
+        $this->assertEquals(11, $this->MagicService->getEleven());
+    }
+
+    public function testGetTen() {
+        $this->assertEquals(10, $this->MagicService->getTen());
+    }
+
+    public function testGetFive() {
+        $this->assertEquals(5, $this->MagicService->getFive());
+    }
 }
