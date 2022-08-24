@@ -26,11 +26,11 @@ class MagicService {
         return $var;
     }
 
-    public function getTenUncovered() {
+    public function getTen() {
         return 10;
     }
 
-    public function getFiveUncovered() {
+    public function getFive() {
         return 5;
     }
 
