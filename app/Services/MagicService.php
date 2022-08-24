@@ -30,6 +30,10 @@ class MagicService {
         return 10;
     }
 
+    public function getFiveUncovered() {
+        return 5;
+    }
+
     public function checkCheckCheck() {
         return "check";
     }
