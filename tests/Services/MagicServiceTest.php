@@ -68,4 +68,5 @@ class MagicServiceTest extends TestCase
     public function testGetFive() {
         $this->assertEquals(5, $this->MagicService->getFive());
     }
+
 }
