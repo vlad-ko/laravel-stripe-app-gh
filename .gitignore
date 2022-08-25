@@ -1,4 +1,5 @@
 codecov
+composer.lock
 /coverage
 /docker
 /node_modules
