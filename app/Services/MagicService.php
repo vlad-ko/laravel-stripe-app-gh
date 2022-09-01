@@ -74,4 +74,8 @@ class MagicService {
     public function getSeventy() {
         return 70;
     }
+
+    public function getFortyTwoUncovered() {
+        return 42;
+    }
 }
