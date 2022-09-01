@@ -70,4 +70,8 @@ class MagicService {
     public function getTwentySevenUncovered() {
         return 27;
     }
+    
+    public function getSeventy() {
+        return 70;
+    }
 }
