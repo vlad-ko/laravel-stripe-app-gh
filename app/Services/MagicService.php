@@ -82,4 +82,8 @@ class MagicService {
     public function newProductionFunction() {
         return ['important production data'];
     }
+
+    public function uncoveredGetOneHundred() {
+        return 100;
+    }
 }
