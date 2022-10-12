@@ -17,3 +17,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(author.getEleven()).toBe(11)
 })
+
+test("Person class", ()=>{
+    expect(author.getAccessLevel()).toBe('admin');
+})
