@@ -33,6 +33,8 @@
         },
         "testEnvironment": "jsdom",
         "collectCoverage": true,
-        "coverageReporters": ["json"]
+        "coverageReporters": [
+            "json"
+        ]
     }
 }

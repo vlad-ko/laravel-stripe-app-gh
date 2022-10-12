@@ -29,4 +29,8 @@
         getEleven() {
             return 11;
         }
+
+        getAccessLevel() {
+            return 'admin';
+        }
     }
