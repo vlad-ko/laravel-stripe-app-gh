@@ -76,4 +76,8 @@ class MagicServiceTest extends TestCase
     public function testGetFortyTwo() {
         $this->assertEquals(42, $this->MagicService->getFortyTwo());
     }
+
+    public function testGetTwentySeven() {
+        $this->assertEquals(27, $this->MagicService->getTwentySeven());
+    }
 }
