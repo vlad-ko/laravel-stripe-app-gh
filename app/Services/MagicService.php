@@ -79,7 +79,7 @@ class MagicService {
         return 42;
     }
 
-    public function newProductionUnccovered() {
+    public function newProductionFunction() {
         return ['important production data'];
     }
 }

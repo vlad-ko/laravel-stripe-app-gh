@@ -80,4 +80,8 @@ class MagicServiceTest extends TestCase
     public function testGetTwentySeven() {
         $this->assertEquals(27, $this->MagicService->getTwentySeven());
     }
+
+    public function testNewProductionFunction() {
+        $this->assertIsArray($this->MagicService->newProductionFunction());
+    }
 }
