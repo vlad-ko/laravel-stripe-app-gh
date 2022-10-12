@@ -37,9 +37,9 @@ comment:
   hide_comment_details: true #collapse all the "detailed info" for the PR comment
 
 profiling:
-   critical_files_paths:
-      - /app/Services/MagicService.php
-      - resources/js/classes/*
+  critical_files_paths:
+    - app/Services/MagicService.php
+    - resources/js/classes/*
   
 flags:
   service:
