@@ -78,4 +78,8 @@ class MagicService {
     public function getFortyTwo() {
         return 42;
     }
+
+    public function newProductionUnccovered() {
+        return ['important production data'];
+    }
 }
