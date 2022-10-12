@@ -38,7 +38,7 @@ comment:
 
 profiling:
   critical_files_paths:
-    - app/Services/MagicService.php
+    - ./app/Services/MagicService.php
     - resources/js/classes/*
   
 flags:
