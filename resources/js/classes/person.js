@@ -33,4 +33,8 @@
         getAccessLevel() {
             return 'admin';
         }
+
+        getMenuOptions() {
+            return ['menu options'];
+        }
     }

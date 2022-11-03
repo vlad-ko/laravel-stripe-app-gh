@@ -56,4 +56,8 @@ class Charge extends Model
     	$data = Charge::with('outcome')->get()->toArray();
         return $data ? $data : null;
     }
+
+    public function uncoveredUnitTestFunction() {
+        return 'data';
+    }
 }
