@@ -78,7 +78,7 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        run: ./codecov -F service -f coverage-service.xml
+        run: ./codecov -t db0d3d08-279c-4659-9ad3-4225a24bc46b -F service -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
@@ -96,7 +96,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
-        run: ./codecov -F backend -f coverage.xml
+        run: ./codecov -t db0d3d08-279c-4659-9ad3-4225a24bc46b -F backend -f coverage.xml
 
       - name: Javascript tests using Jest
         run: npm run test
