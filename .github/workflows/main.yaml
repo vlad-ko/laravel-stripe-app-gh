@@ -96,11 +96,11 @@ jobs:
       - name: Run Unit Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      - name: Upload unit coverage report
-        run: ./codecov -F unit -f coverage-unit.xml
+      # - name: Upload unit coverage report
+      #   run: ./codecov -F unit -f coverage-unit.xml
 
-      - name: Run Complete Testsuite with Coverage
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      # - name: Run Complete Testsuite with Coverage
+      #   run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report
         run: ./codecov -F backend -f coverage.xml

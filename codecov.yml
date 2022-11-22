@@ -38,9 +38,9 @@ comment:
 
 profiling:
   critical_files_paths:
-    - app/services/*
+    - app/Services/*
     - resources/js/classes/*
-    - ./app/models/charge.php
+    - app/Models/Charge.php
   
 flags:
   service:
