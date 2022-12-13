@@ -51,6 +51,10 @@ flags:
     carryforward: true
     paths: 
       - app/Http/Controllers
+  unit:
+    carryforward: true
+    paths: 
+      - app/Models
   javascript:
     paths:
       - resources/js
