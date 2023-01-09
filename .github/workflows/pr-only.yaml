@@ -1,7 +1,7 @@
 on: [pull_request]
 jobs:
   pull-request-ci-job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       mysql-service:
@@ -80,17 +80,17 @@ jobs:
       - name: Upload Service coverage report #step 3
         run: ./codecov -t db0d3d08-279c-4659-9ad3-4225a24bc46b -F service -f coverage-service.xml
       
-      # - name: Run Controller Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+      - name: Run Controller Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      # - name: Upload Controller coverage report
-      #   run: ./codecov -F controller -f coverage-controller.xml
+      - name: Upload Controller coverage report
+        run: ./codecov -F controller -f coverage-controller.xml
 
-      # - name: Run Unit Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      - name: Run Unit Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      # - name: Upload unit coverage report
-      #   run: ./codecov -F unit -f coverage-unit.xml
+      - name: Upload unit coverage report
+        run: ./codecov -F unit -f coverage-unit.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml

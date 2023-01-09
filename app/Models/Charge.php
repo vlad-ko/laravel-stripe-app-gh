@@ -60,4 +60,8 @@ class Charge extends Model
     public function uncoveredUnitTestFunction() {
         return 'data';
     }
+
+    public function unitTestModel() {
+        return 'data';
+    }
 }
