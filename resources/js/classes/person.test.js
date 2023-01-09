@@ -21,3 +21,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(author.getAccessLevel()).toBe('admin');
 })
+
+test("Person class", ()=>{
+    expect(author.getMenuOptions()).toBe('menu options');
+})
