@@ -64,4 +64,8 @@ class Charge extends Model
     public function unitTestModel() {
         return 'data';
     }
+
+    public function uncoveredFunctionCritical() {
+        return 'critical data';
+    }
 }
