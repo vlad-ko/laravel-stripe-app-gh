@@ -35,6 +35,6 @@
         }
 
         getMenuOptions() {
-            return ['menu options'];
+            return 'menu options';
         }
     }
