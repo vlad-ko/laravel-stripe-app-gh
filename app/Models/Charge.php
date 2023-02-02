@@ -64,4 +64,8 @@ class Charge extends Model
     public function unitTestModel() {
         return 'data';
     }
-}
+
+    public function testNotCovered() {
+        return 70;
+    }
+ }
