@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['codecov.insights'])->group(function () {
+
     Route::get('/', 'ReportsController@index');
 
     /**
@@ -23,4 +23,4 @@ Route::middleware(['codecov.insights'])->group(function () {
 
 
     Route::get('/uncovered', 'DemoController@uncovered');
-});
+
