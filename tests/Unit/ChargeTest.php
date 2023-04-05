@@ -21,4 +21,11 @@ class ChargeTest extends TestCase
         $result = $charge->getDataForReport();
         $this->assertNotEmpty($result);
     }
+
+    public function testUncoveredFunction() {
+
+        $charge = Charge::factory()->make();
+        $result = $charge->uncoveredFunction();
+        $this->assertEquals(80, $result);
+    }
 }
