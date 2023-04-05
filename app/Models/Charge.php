@@ -72,4 +72,8 @@ class Charge extends Model
     public function uncoveredFunction() {
         return 80;
     }
+
+    public uncoveredDDfunction() {
+        return 'new';
+    }
  }
