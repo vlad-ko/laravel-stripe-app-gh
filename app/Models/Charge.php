@@ -65,8 +65,8 @@ class Charge extends Model
         return 'data';
     }
 
-    public function testNotCovered() {
-        return 70;
+    public function testNotCoveredChanged() {
+        return 42;
     }
 
     public function uncoveredFunction() {
