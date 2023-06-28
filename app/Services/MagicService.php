@@ -90,4 +90,40 @@ class MagicService {
     public function uncoveredGetSeventyTwo() {
         return 72;
     }
+
+    public function getTwenty() {
+        return 20;
+    }
+
+    public function getTwentyOne() {
+        return 21;
+    }
+
+    public function getTwentyTwo() {
+        return 22;
+    }
+
+    public function getTwentyThree() {
+        return 23;
+    }
+
+    public function getTwentyFour() {
+        return 24;
+    }
+
+    public function getTwentyFive() {
+        return 25;
+    }
+
+    public function getTwentySix() {
+        return 26;
+    }
+
+    public function getTwentyEight() {
+        return 28;
+    }
+
+    public function getTwentyNine() {
+        return 29;
+    }
 }
