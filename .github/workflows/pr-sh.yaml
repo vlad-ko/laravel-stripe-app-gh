@@ -78,30 +78,30 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev -F service -f coverage-service.xml
+        run: ./codecov -t ${{ secrets.CODECOV_SH_TOKEN }} --url https://publicqa.codecov.dev -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
       - name: Upload Controller coverage report
-        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev -F controller -f coverage-controller.xml
+        run: ./codecov -t ${{ secrets.CODECOV_SH_TOKEN }} --url https://publicqa.codecov.dev -F controller -f coverage-controller.xml
 
       - name: Run Unit Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
       - name: Upload unit coverage report
-        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev -F unit -f coverage-unit.xml
+        run: ./codecov -t ${{ secrets.CODECOV_SH_TOKEN }} --url https://publicqa.codecov.dev -F unit -f coverage-unit.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload overall coverage report to another repo
-        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev -F backend -f coverage.xml
+        run: ./codecov -t ${{ secrets.CODECOV_SH_TOKEN }} --url https://publicqa.codecov.dev -F backend -f coverage.xml
 
       - name: Javascript tests using Jest
         run: npm run test
 
       - name: Upload Javascript coverage
-        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev -F javascript -f coverage/coverage-final.json
+        run: ./codecov -t ${{ secrets.CODECOV_SH_TOKEN }} --url https://publicqa.codecov.dev -F javascript -f coverage/coverage-final.json
       
       
