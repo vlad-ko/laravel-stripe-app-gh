@@ -1,0 +1,107 @@
+on: [pull_request]
+jobs:
+  pull-request-ci-job:
+    runs-on: ubuntu-20.04
+
+    services:
+      mysql-service:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306 
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+    steps:
+
+      - name: Checkout app code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@verbose
+        with:
+          php-version: 8.0
+          coverage: xdebug
+        env:
+          update: true
+
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
+
+      - name: Prepare Laravel Application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Create test database
+        run: |
+          mysql -uroot -h127.0.0.1 -proot -e 'CREATE DATABASE IF NOT EXISTS test;'
+
+      - name: Setup Database
+        run: |
+          php artisan migrate --no-interaction -vvv
+          php artisan db:seed
+
+      - name: Install NPM modules
+        run: npm i
+
+      ### START Codecov integration ###
+      - name: Download Codecov binary # step 1
+        run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+      
+      ### STEPS below are not required, but are great to have for extra security
+      - name: Verify integrity get GPG
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import #
+
+      - name: Get SHAsums
+        run: | 
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
+
+
+      ## VERIFY integrity 
+      - name: Test Signature
+        run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+      
+      - name: Test SHAsums
+        run: shasum -a 256 -c codecov.SHA256SUM
+
+      - name: Fix permission #step 2
+        run: chmod +x codecov
+
+      # RUN tests an upload reports ## comment
+      - name: Run Service Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+
+      - name: Upload Service coverage report #step 3
+        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev/ -F service -f coverage-service.xml
+      
+      - name: Run Controller Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+
+      - name: Upload Controller coverage report
+        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev/ -F controller -f coverage-controller.xml
+
+      - name: Run Unit Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+
+      - name: Upload unit coverage report
+        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev/ -F unit -f coverage-unit.xml
+
+      - name: Run Complete Testsuite with Coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: Upload overall coverage report to another repo
+        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev/ -F backend -f coverage.xml
+
+      - name: Javascript tests using Jest
+        run: npm run test
+
+      - name: Upload Javascript coverage
+        run: ./codecov -t ${CODECOV_SH_TOKEN} --url https://publicqa.codecov.dev/ -F javascript -f coverage/coverage-final.json
+      
+      
