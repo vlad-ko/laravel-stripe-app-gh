@@ -105,6 +105,6 @@ jobs:
         run: npm run test
 
       - name: Upload Javascript coverage
-        run: ./codecov -F uu:thisnameis.ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui1234567891011121314151617181920212222324252627282829201212:thisnameis.ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui -f coverage/coverage-final.json
+        run: ./codecov -F uu-thisnameis-ridculouslylong-javascrip-but-thisisareally-longnamethatisgoing-tobe-supported-withmanymanycharacters-andthisflagname-istoolongto-dispaly-intheui1234567891011121314151617181920212222324252627282829201212-thisnameis-ridculouslylong-javascrip-but-thisisareally-longnamethatisgoing-tobe-supported-withmanymanycharacters-andthisflagname-istoolongto-dispaly-intheui -f coverage/coverage-final.json
       
       
