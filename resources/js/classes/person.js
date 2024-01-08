@@ -37,4 +37,8 @@
         getMenuOptions() {
             return ['menu options'];
         }
+
+        getPersonalData() {
+            return 'secret data';
+        }
     }
