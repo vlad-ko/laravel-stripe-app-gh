@@ -78,7 +78,12 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        run: ./codecov upload-process -t ${{ secrets.CODECOV_TOKEN }} --flag service -f coverage-service.xml
+        env: # Or as an environment variable
+            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+            codecov --verbose create-commit --fail-on-error 
+            codecov --verbose create-report --fail-on-error 
+            codecov --verbose do-upload --fail-on-error --flag service --name service-tests
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
