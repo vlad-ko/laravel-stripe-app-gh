@@ -78,7 +78,7 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        run: ./codecov upload-process -t ${CODECOV_TOKEN} --flag=service -f coverage-service.xml
+        run: ./codecov upload-process -t ${CODECOV_TOKEN} --flag 'service' -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
@@ -99,7 +99,7 @@ jobs:
       #   run: ./codecov ${CODECOV_TOKEN} -F backend -f coverage.xml
 
       # - name: Upload overall coverage report to another repo
-      #   run: ./codecov -t ${CODECOV_DD_TOKEN} --url https://doordash.codecov.io -F backend -f coverage.xml
+      #   run: ./codecov -t ${CODECOV_DD_TOKEN} --url https://codecov.io -F backend -f coverage.xml
 
       # - name: Javascript tests using Jest
       #   run: npm run test
