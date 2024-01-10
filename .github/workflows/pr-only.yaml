@@ -81,7 +81,7 @@ jobs:
         env: # Or as an environment variable
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-            codecov --verbose upload-process --fail-on-error -F service -f coverage-service.xml
+            ./codecov --verbose upload-process --fail-on-error -F service -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
