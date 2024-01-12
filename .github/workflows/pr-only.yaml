@@ -81,7 +81,7 @@ jobs:
         env: # Or as an environment variable
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-            ./codecov --verbose upload-process --fail-on-error -F service -f coverage-service.xml
+            ./codecov --verbose upload-process --fail-on-error -n 'service'${{ github.run_id }} -F service -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
@@ -107,7 +107,10 @@ jobs:
       # - name: Javascript tests using Jest
       #   run: npm run test
 
-      # - name: Upload Javascript coverage
-      #   run: ./codecov -F 'uu;:1234567891011121314151617181920212222324252627282829201212:thisnameis:ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui1234567891011121314151617181920212222324252627282829201212:thisnameis#ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui' -f coverage/coverage-final.json
+      - name: Upload Javascript coverage
+        env: # Or as an environment variable
+            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+            ./codecov --verbose upload-process --fail-on-error -n 'javascript'${{ github.run_id }} -F 'uu;:1234567891011121314151617181920212222324252627282829201212:thisnameis:ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui1234567891011121314151617181920212222324252627282829201212:thisnameis#ridculouslylong-javascrip;but-thisisareally:longnamethatisgoing-tobe;supported-withmanymanycharacters;andthisflagname-istoolongto;dispaly:intheui' -f coverage/coverage-final.json
       
       
