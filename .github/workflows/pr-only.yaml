@@ -15,8 +15,8 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-    steps:
 
+    steps:
       - name: Checkout app code
         uses: actions/checkout@v2
         with:
@@ -78,10 +78,7 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        env: # Or as an environment variable
-            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: |
-            ./codecov --verbose upload-process --fail-on-error -n 'service'${{ github.run_id }} -F service -f coverage-service.xml
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'service'${{ github.run_id }} -F service -f coverage-service.xml
       
       # - name: Run Controller Testsuite with Coverage
       #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
