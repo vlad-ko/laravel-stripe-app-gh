@@ -1,4 +1,3 @@
-
 coverage:
   status:
     project:
@@ -61,6 +60,7 @@ flags:
   backend:
     paths:
       - .*
+
 component_management:
   default_rules:  # default rules that will be inherited by all components
     statuses:
@@ -71,3 +71,4 @@ component_management:
         name: person-menu  # this is a display name, and can be changed freely
         paths: 
           - resources/js
+
