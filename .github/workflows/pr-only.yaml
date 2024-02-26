@@ -15,8 +15,8 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-    steps:
 
+    steps:
       - name: Checkout app code
         uses: actions/checkout@v2
         with:
@@ -50,19 +50,19 @@ jobs:
         run: npm i
 
       ### START Codecov integration ###
-      - name: Download Codecov binary # step 1
-        run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+      - name: Download Codecov CLI Binary # step 1
+        run: curl -Os https://cli.codecov.io/latest/linux/codecov
+
       
       ### STEPS below are not required, but are great to have for extra security
       - name: Verify integrity get GPG
-        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import #
+        run: curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
 
       - name: Get SHAsums
         run: | 
-          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
-          curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig   
-
-
+          curl -Os https://cli.codecov.io/latest/linux/codecov.SHA256SUM
+          curl -Os https://cli.codecov.io/latest/linux/codecov.SHA256SUM.sig
+  
       ## VERIFY integrity 
       - name: Test Signature
         run: gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
@@ -71,40 +71,37 @@ jobs:
         run: shasum -a 256 -c codecov.SHA256SUM
 
       - name: Fix permission #step 2
-        run: chmod +x codecov
+        run: sudo chmod +x codecov
 
-      # # RUN tests an upload reports ## comment
-      # - name: Run Service Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+      # RUN tests an upload reports ## comment
+      - name: Run Service Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
-      # - name: Upload Service coverage report #step 3
-      #   run: ./codecov ${CODECOV_TOKEN} -F service -f coverage-service.xml
+      - name: Upload Service coverage report #step 3
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
       
-      # - name: Run Controller Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+      - name: Run Controller Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      # - name: Upload Controller coverage report
-      #   run: ./codecov -F controller -f coverage-controller.xml
+      - name: Upload Controller coverage report
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-service.xml
 
-      # - name: Run Unit Testsuite with Coverage
-      #   run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      - name: Run Unit Testsuite with Coverage
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      # - name: Upload unit coverage report
-      #   run: ./codecov -F unit -f coverage-unit.xml
+      - name: Upload unit coverage report
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      # - name: Upload overall coverage report
-      #   run: ./codecov ${CODECOV_TOKEN} -F backend -f coverage.xml
+      - name: Upload overall coverage report
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'backend'-${{ github.run_id }} -F backend -f coverage.xml
 
-      - name: Upload overall coverage report to another repo
-        run: ./codecov -t ${CODECOV_DD_TOKEN} --url https://doordash.codecov.io -F backend -f coverage.xml
+      - name: Javascript tests using Jest
+        run: npm run test
 
-      # - name: Javascript tests using Jest
-      #   run: npm run test
-
-      # - name: Upload Javascript coverage
-      #   run: ./codecov -F javascript -f coverage/coverage-final.json
+      - name: Upload Javascript coverage
+        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       
