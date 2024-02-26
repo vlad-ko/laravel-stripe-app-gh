@@ -27,7 +27,7 @@ github_checks:
     annotations: true
 
 comment:
-  layout: "newheader, diff, flags, files"
+  layout: "newheader, diff, flags, components, files"
   require_changes: false  # if true: only post the comment if coverage changes
   require_base: false        # [yes :: must have a base report to post]
   require_head: true       # [yes :: must have a head report to post]
@@ -60,3 +60,15 @@ flags:
   backend:
     paths:
       - .*
+
+component_management:
+  default_rules:  # default rules that will be inherited by all components
+    statuses:
+      - type: project # in this case every component that doens't have a status defined will have a project type one
+        target: auto
+  individual_components:
+      - component_id: js-component  # this is an identifier that should not be changed
+        name: person-menu  # this is a display name, and can be changed freely
+        paths: 
+          - resources/js
+
