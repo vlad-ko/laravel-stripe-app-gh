@@ -41,4 +41,8 @@
         getPersonalData() {
             return 'secret data';
         }
+
+        getMenuItem() {
+            return 'menu item';
+        }
     }
