@@ -45,4 +45,12 @@
         getMenuItem() {
             return 'menu item';
         }
+
+        getIfElseResult() {
+            if (true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
