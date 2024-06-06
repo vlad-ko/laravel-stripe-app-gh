@@ -57,6 +57,13 @@ flags:
   javascript:
     paths:
       - resources/js
-  backend:
-    paths:
-      - .*
+
+component_management:
+  individual_components:
+    - component_id: "backend"
+      paths:
+        - ".*"
+      flag_regexes: # List. Flags to be included in the component.
+      - "unit"
+      - "controller"
+      - "service"
