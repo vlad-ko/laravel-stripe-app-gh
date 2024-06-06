@@ -23,7 +23,7 @@ coverage:
         flags:
           - javascript
 
-github_checks:
+github_checks: #does not work if flags are configured
     annotations: true
 
 comment:
@@ -61,9 +61,14 @@ flags:
 component_management:
   individual_components:
     - component_id: "backend"
+      name: "backend"
       paths:
         - ".*"
       flag_regexes: # List. Flags to be included in the component.
         - "unit"
         - "controller"
         - "service"
+
+codecov:
+  notify:
+    manual_trigger: true
