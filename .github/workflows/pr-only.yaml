@@ -78,30 +78,27 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
       - name: Upload Service coverage report #step 3
-        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
+        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
       - name: Upload Controller coverage report
-        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-service.xml
+        run: ./codecov upload-process  -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-service.xml
 
       - name: Run Unit Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
       - name: Upload unit coverage report
-        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
+        run: ./codecov upload-process  -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
 
       - name: Run Complete Testsuite with Coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
-
-      - name: Upload overall coverage report
-        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'backend'-${{ github.run_id }} -F backend -f coverage.xml
 
       - name: Javascript tests using Jest
         run: npm run test
 
       - name: Upload Javascript coverage
-        run: ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
+        run: ./codecov upload-process  -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       
