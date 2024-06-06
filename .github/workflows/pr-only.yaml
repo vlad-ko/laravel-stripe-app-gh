@@ -51,7 +51,10 @@ jobs:
 
       - name: Install jest
         run: npm install -g jest
-
+      
+      - name: Install vue template compiler
+        run: npm i -g vue-template-compiler
+        
       ### START Codecov integration ### (Codecov integration - STEP 1)
       - name: Download Codecov CLI Binary 
         run: curl -Os https://cli.codecov.io/latest/linux/codecov
