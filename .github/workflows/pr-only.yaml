@@ -47,7 +47,7 @@ jobs:
           php artisan db:seed
 
       - name: Install NPM modules
-        run: npm i --legacy-peer-deps
+        run: npm i 
 
       - name: Install jest
         run: npm i -g jest
