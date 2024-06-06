@@ -102,5 +102,5 @@ jobs:
         run: ./codecov upload-process  -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       - name: Trigger notifications
-        run: ./codecov t ${{ secrets.CODECOV_TOKEN }} send-notifications
+        run: ./codecov -t ${{ secrets.CODECOV_TOKEN }} send-notifications
       
