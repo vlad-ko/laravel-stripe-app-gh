@@ -9,7 +9,7 @@
         "prod": "npm run production",
         "production": "mix --production",
         "test": "jest",
-	"build": ""
+        "build": ""
     },
     "devDependencies": {
         "@babel/plugin-proposal-object-rest-spread": "^7.20.2",
@@ -38,5 +38,8 @@
         "coverageReporters": [
             "json"
         ]
+    },
+    "dependencies": {
+        "i": "^0.3.7"
     }
 }
