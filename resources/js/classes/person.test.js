@@ -23,5 +23,5 @@ test("Person class", ()=>{
 })
 
 test("Person class", ()=>{
-    expect(person.getMenuOptions()).toBe('menu items');
+    expect(person.getMenuOptions()).toBe('menu options');
 })
