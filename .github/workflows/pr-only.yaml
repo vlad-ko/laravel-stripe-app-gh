@@ -86,19 +86,19 @@ jobs:
         run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
       - name: Upload Controller coverage report
-        run: ./codecov upload-process  -disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
+        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
 
       - name: Run Unit Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
       - name: Upload unit coverage report
-        run: ./codecov upload-process -disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
+        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
 
       - name: Javascript tests using Jest
         run: npm run test
 
       - name: Upload Javascript coverage
-        run: ./codecov upload-process -disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
+        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       - name: Trigger notifications
         run: ./codecov send-notifications -t ${{ secrets.CODECOV_TOKEN }} 
