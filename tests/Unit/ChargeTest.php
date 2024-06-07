@@ -28,4 +28,11 @@ class ChargeTest extends TestCase
         $result = $charge->uncoveredFunction();
         $this->assertEquals(80, $result);
     }
+
+    public function testReturnSeventySix() {
+
+        $charge = Charge::factory()->make();
+        $result = $charge->returnSeventySix();
+        $this->assertEquals(76, $result);
+    }
 }
