@@ -76,4 +76,8 @@ class Charge extends Model
     public function returnSeventySix() {
         return 76;
     }
+
+    public function returnDataSet() {
+        return 'data set';
+    }
  }
