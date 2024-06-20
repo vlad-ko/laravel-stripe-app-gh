@@ -25,3 +25,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(person.getMenuOptions()).toBe('menu options');
 })
+
+test("Person class", ()=>{
+    expect(person.getPersonalData()).toBe('secret data');
+})

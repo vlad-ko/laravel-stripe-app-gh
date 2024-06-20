@@ -64,7 +64,7 @@ component_management:
       name: "backend"
       paths:
         - ".*"
-      flag_regexes: # List. Flags to be included in the component.
+      flag_regexes: # List of lags to be included in the component.
         - "unit"
         - "controller"
         - "service"
