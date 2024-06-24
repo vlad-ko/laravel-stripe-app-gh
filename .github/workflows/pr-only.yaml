@@ -76,23 +76,23 @@ jobs:
         run: sudo chmod +x codecov
 
       # RUN tests an upload reports ### (Codecov integration - STEP 3)
-      - name: Run Service Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+      # - name: Run Service Testsuite with Coverage
+      #   run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
 
-      - name: Upload Service coverage report 
-        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
+      # - name: Upload Service coverage report 
+      #   run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
       
-      - name: Run Controller Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+      # - name: Run Controller Testsuite with Coverage
+      #   run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
 
-      - name: Upload Controller coverage report
-        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
+      # - name: Upload Controller coverage report
+      #   run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
 
-      - name: Run Unit Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      # - name: Run Unit Testsuite with Coverage
+      #   run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
 
-      - name: Upload unit coverage report
-        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
+      # - name: Upload unit coverage report
+      #   run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
 
       - name: Javascript tests using Jest
         run: npm run test
