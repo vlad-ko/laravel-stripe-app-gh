@@ -18,8 +18,8 @@ class ImportantOneTest extends TestCase
 
      public function testBrandNewFunctionHasNoTest() {
 
-        $charge = Charge::factory()->make();
-        $result = $charge->brandNewFunctionHasNoTest();
+        $importantOne = ImportantOne::factory()->make();
+        $result = $importantOne->brandNewFunctionHasNoTest();
         $this->assertEquals('we have data', $result);
     }
  
