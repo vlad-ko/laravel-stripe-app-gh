@@ -58,7 +58,9 @@ class Charge extends Model
     }
 
     public function uncoveredUnitTestFunction() {
-        return 'data';
+        if (true) {
+            return 'data';
+        }
     }
 
     public function unitTestModel() {
