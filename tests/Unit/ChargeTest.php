@@ -42,13 +42,13 @@ class ChargeTest extends TestCase
         $result = $charge->returnDataSet();
         $this->assertEquals('data set', $result);
     }
-
-
+    
     public function testUncoveredUnitTestFuction() {
 
         $charge = Charge::factory()->make();
         $result = $charge->uncoveredUnitTestFunction();
         $this->assertEquals('data', $result);
+    }
 
     public function testAddSomeFunctions() {
 
