@@ -75,6 +75,9 @@ jobs:
       - name: Fix permission 
         run: sudo chmod +x codecov
 
+      - name: Pick a base for the PR
+        run: ./codecov pr-base-picking -t ${{ secrets.CODECOV_TOKEN }} --base-sha ${{ github.event.pull_request.base.sha }} --pr ${{ github.event.number }}
+
       # RUN tests an upload reports ### (Codecov integration - STEP 3)
       - name: Run Service Testsuite with Coverage
         run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
