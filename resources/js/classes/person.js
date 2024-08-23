@@ -45,4 +45,8 @@
         getSomeMoreInfo() {
             return 'more info';
         }
+
+        getStaffName() {
+            return 'staff name';
+        }
     }
