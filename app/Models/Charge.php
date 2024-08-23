@@ -94,4 +94,8 @@ class Charge extends Model
     public function moreDataFound() {
         return true;
     }
+
+    public function returnTrue() {
+        return true;
+    }
  }
