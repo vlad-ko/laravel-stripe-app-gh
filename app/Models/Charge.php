@@ -90,4 +90,8 @@ class Charge extends Model
     public function addingAsecondFunction() {
         return true; 
     }
+
+    public function moreDataFound() {
+        return true;
+    }
  }
