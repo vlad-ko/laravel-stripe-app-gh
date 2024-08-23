@@ -57,4 +57,12 @@ class ChargeTest extends TestCase
         $this->assertTrue($result);
 
     }
+
+    public function testAddingAsecondFunction() {
+
+        $charge = Charge::factory()->make();
+        $result = $charge->addingAsecondFunction();
+        $this->assertTrue($result);
+
+    }
 }

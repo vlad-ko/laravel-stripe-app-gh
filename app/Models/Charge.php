@@ -86,4 +86,8 @@ class Charge extends Model
     public function addSomeFunctions() {
         return true; 
     }
+
+    public function addingAsecondFunction() {
+        return true; 
+    }
  }
