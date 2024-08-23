@@ -29,3 +29,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(person.getPersonalData()).toBe('secret data');
 })
+
+test("Person class", ()=>{
+    expect(person.getSomeMoreInfo()).toBe('more info');
+})

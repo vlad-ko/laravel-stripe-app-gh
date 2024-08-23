@@ -41,4 +41,8 @@
         getPersonalData() {
             return 'secret data';
         }
+
+        getSomeMoreInfo() {
+            return 'more info';
+        }
     }
