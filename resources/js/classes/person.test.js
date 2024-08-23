@@ -33,3 +33,7 @@ test("Person class", ()=>{
 test("Person class", ()=>{
     expect(person.getSomeMoreInfo()).toBe('more info');
 })
+
+test("Person class", ()=>{
+    expect(person.getStaffName()).toBe('staff name');
+})
