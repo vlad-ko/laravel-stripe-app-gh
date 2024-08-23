@@ -49,4 +49,8 @@
         getStaffName() {
             return 'staff name';
         }
+
+        getStatus() {
+            return 'status';
+        }
     }
