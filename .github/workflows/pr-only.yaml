@@ -91,11 +91,18 @@ jobs:
       - name: Upload Controller coverage report
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
 
-      - name: Run Unit Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      - name: Run Unit Testsuite with Coverage and Junit outpu
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml --log-junit junit-unit.xml
 
-      - name: Upload unit coverage report
+      - name: Upload unit test coverage report
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: junit-unit.xml
 
       - name: Javascript tests using Jest
         run: npm run test
