@@ -73,3 +73,4 @@ component_management:
 codecov:
   notify:
     manual_trigger: true
+    notify_error: true
