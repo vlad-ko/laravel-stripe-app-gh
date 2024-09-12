@@ -53,4 +53,8 @@
         getStatus() {
             return 'status';
         }
+
+        getUntestedReturn() {
+            return 'untested';
+        }
     }
