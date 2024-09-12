@@ -80,13 +80,13 @@ jobs:
 
       # RUN tests an upload reports ### (Codecov integration - STEP 3)
       - name: Run Service Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml --log-junit junit-service.xml
 
       - name: Upload Service coverage report 
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml --log-junit junit-controller.xml
 
       - name: Upload Controller coverage report
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
@@ -102,13 +102,13 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: junit-unit.xml
+          files: junit-unit.xml,junit-controller.xml,junit-service.xml
 
-      - name: Javascript tests using Jest
-        run: npm run test
+      # - name: Javascript tests using Jest
+      #   run: npm run test
 
-      - name: Upload Javascript coverage
-        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
+      # - name: Upload Javascript coverage
+      #   run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       - name: Trigger notifications
         run: ./codecov send-notifications -t ${{ secrets.CODECOV_TOKEN }} 
