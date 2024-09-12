@@ -73,11 +73,17 @@ class ChargeTest extends TestCase
         $this->assertTrue($result);
 
     }
+
     public function testReturnTrue() {
 
         $charge = Charge::factory()->make();
         $result = $charge->returnTrue();
         $this->assertTrue($result);
+    }
 
+    public function testGetSomeValue() {
+        $charge = Charge::factory()->make();
+        $result = $charge->getSomeValue();
+        $this->assertEquals('some value', $result);
     }
 }

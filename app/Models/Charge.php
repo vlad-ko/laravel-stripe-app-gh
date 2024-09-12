@@ -98,4 +98,8 @@ class Charge extends Model
     public function returnTrue() {
         return true;
     }
+
+    public function getSomeValue() {
+        return 'some value';
+    }
  }
