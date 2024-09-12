@@ -55,6 +55,7 @@ flags:
     paths: 
       - app/Models
   javascript:
+    carryforward: true
     paths:
       - resources/js
 

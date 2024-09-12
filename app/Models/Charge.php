@@ -82,4 +82,20 @@ class Charge extends Model
     public function returnDataSet() {
         return 'data set';
     }
+
+    public function addSomeFunctions() {
+        return true; 
+    }
+
+    public function addingAsecondFunction() {
+        return true; 
+    }
+
+    public function moreDataFound() {
+        return true;
+    }
+
+    public function returnTrue() {
+        return true;
+    }
  }

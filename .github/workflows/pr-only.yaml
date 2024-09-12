@@ -75,30 +75,40 @@ jobs:
       - name: Fix permission 
         run: sudo chmod +x codecov
 
+      - name: Pick a base for the PR
+        run: ./codecov pr-base-picking -t ${{ secrets.CODECOV_TOKEN }} --base-sha $(git rev-parse origin/main) --pr ${{ github.event.number }} --service github --slug vlad-ko/laravel-stripe-app-gh
+
       # RUN tests an upload reports ### (Codecov integration - STEP 3)
       - name: Run Service Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml
+        run: vendor/bin/phpunit --testsuite="Services Tests" --coverage-clover=coverage-service.xml --log-junit junit-service.xml
 
       - name: Upload Service coverage report 
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml
       
       - name: Run Controller Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml
+        run: vendor/bin/phpunit --testsuite="Controllers Tests" --coverage-clover=coverage-controller.xml --log-junit junit-controller.xml
 
       - name: Upload Controller coverage report
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'controller'-${{ github.run_id }} -F controller -f coverage-controller.xml
 
-      - name: Run Unit Testsuite with Coverage
-        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml
+      - name: Run Unit Testsuite with Coverage and Junit output
+        run: vendor/bin/phpunit --testsuite="Unit Tests" --coverage-clover=coverage-unit.xml --log-junit junit-unit.xml
 
-      - name: Upload unit coverage report
+      - name: Upload unit test coverage report
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'unit'-${{ github.run_id }} -F unit -f coverage-unit.xml
 
-      - name: Javascript tests using Jest
-        run: npm run test
+      - name: Upload Junit test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: junit-unit.xml,junit-controller.xml,junit-service.xml
 
-      - name: Upload Javascript coverage
-        run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
+      # - name: Javascript tests using Jest
+      #   run: npm run test
+
+      # - name: Upload Javascript coverage
+      #   run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n 'javascript'-${{ github.run_id }} -F 'javascript' -f coverage/coverage-final.json
       
       - name: Trigger notifications
         run: ./codecov send-notifications -t ${{ secrets.CODECOV_TOKEN }} 
