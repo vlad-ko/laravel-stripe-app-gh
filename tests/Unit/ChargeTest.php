@@ -78,7 +78,7 @@ class ChargeTest extends TestCase
 
         $charge = Charge::factory()->make();
         $result = $charge->returnTrue();
-        $this->assertFalse($result);
+        $this->assertTrue($result);
     }
 
     public function testGetSomeValue() {
