@@ -22,6 +22,11 @@ coverage:
         target: 80%
         flags:
           - javascript
+          
+codecov:
+  notify:
+    manual_trigger: true
+    notify_error: true
 
 github_checks: #does not work if flags are configured
     annotations: true
@@ -63,14 +68,7 @@ component_management:
   individual_components:
     - component_id: "backend"
       name: "backend"
-      paths:
-        - ".*"
       flag_regexes: # List of lags to be included in the component.
         - "unit"
         - "controller"
         - "service"
-
-codecov:
-  notify:
-    manual_trigger: true
-    notify_error: true
