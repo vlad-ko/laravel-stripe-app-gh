@@ -53,4 +53,8 @@
         getStatus() {
             return 'status';
         }
+
+        getAnotherValue() {
+            return 'another value';
+        }
     }
