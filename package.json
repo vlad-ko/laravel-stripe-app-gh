@@ -34,7 +34,8 @@
         "testEnvironment": "jsdom",
         "collectCoverage": true,
         "coverageReporters": [
-            "json", "html"
+            "json",
+            "html"
         ]
     }
 }
