@@ -116,6 +116,6 @@ jobs:
       - name: Upload dummy file to Codecov
         run: ./codecov upload-process --disable-search -t ${{ secrets.CODECOV_TOKEN }} -n dummy-${{ github.run_id }} -F dummy -f dummy-file.txt
 
-      - name: Trigger notifications
-        run: ./codecov send-notifications -t ${{ secrets.CODECOV_TOKEN }} 
+      # - name: Trigger notifications
+      #   run: ./codecov send-notifications -t ${{ secrets.CODECOV_TOKEN }} 
       
