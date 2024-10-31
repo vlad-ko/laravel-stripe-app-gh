@@ -25,7 +25,7 @@ coverage:
           
 codecov:
   notify:
-    # manual_trigger: true
+    manual_trigger: true
     notify_error: true
 
 github_checks: #does not work if flags are configured
