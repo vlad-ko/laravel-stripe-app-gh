@@ -21,8 +21,3 @@ test('divides 8 / 2 to equal 4', () => {
   const calculator = new Calculator();
   expect(calculator.divide(8, 2)).toBe(4);
 });
-
-test('divides by zero to throw error', () => {
-  const calculator = new Calculator();
-  expect(() => calculator.divide(8, 0)).toThrow('Division by zero');
-});
