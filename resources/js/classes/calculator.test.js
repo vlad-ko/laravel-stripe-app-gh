@@ -22,7 +22,24 @@ test('divides 8 / 2 to equal 4', () => {
   expect(calculator.divide(8, 2)).toBe(4);
 });
 
-test('adds 0 + 0 to equal 0 (useless test)', () => {
+test('divides by zero to throw error', () => {
   const calculator = new Calculator();
+  expect(() => calculator.divide(8, 0)).toThrow('Division by zero');
+});
+
+test('calculates 2 to the power of 3', () => {
+  const calculator = new Calculator();
+  expect(calculator.power(2, 3)).toBe(8);
+});
+
+test('handles negative exponents', () => {
+  const calculator = new Calculator();
+  expect(calculator.power(2, -1)).toBe(0.5);
+});
+
+test('throws error for invalid power inputs', () => {
+  const calculator = new Calculator();
+  expect(() => calculator.power(NaN, 2)).toThrow('Invalid inputs');
+});
   expect(calculator.add(0, 0)).toBe(0);
 });
