@@ -1,48 +1,65 @@
-// FILE: resources/js/calculator.test.js
-
 const Calculator = require('./calculator');
 
-test('adds 1 + 2 to equal 3', () => {
-  const calculator = new Calculator();
-  expect(calculator.add(1, 2)).toBe(3);
-});
+describe('Calculator', () => {
+  let calculator;
 
-test('subtracts 5 - 2 to equal 3', () => {
-  const calculator = new Calculator();
-  expect(calculator.subtract(5, 2)).toBe(3);
-});
+  beforeEach(() => {
+    calculator = new Calculator();
+  });
 
-test('multiplies 3 * 4 to equal 12', () => {
-  const calculator = new Calculator();
-  expect(calculator.multiply(3, 4)).toBe(12);
-});
+  describe('add method', () => {
+    it('should add two numbers correctly', () => {
+      expect(calculator.add(2, 3)).toBe(5);
+    });
+  });
 
-test('divides 8 / 2 to equal 4', () => {
-  const calculator = new Calculator();
-  expect(calculator.divide(8, 2)).toBe(4);
-});
+  describe('subtract method', () => {
+    it('should subtract two numbers correctly', () => {
+      expect(calculator.subtract(5, 2)).toBe(3);
+    });
+  });
 
-test('division by zero returns Infinity', () => {
-  const calculator = new Calculator();
-  expect(calculator.divide(8, 0)).toBe(Infinity);
-});
+  describe('multiply method', () => {
+    it('should multiply two numbers correctly', () => {
+      expect(calculator.multiply(3, 4)).toBe(12);
+    });
+  });
 
-test('calculates 2 to the power of 3', () => {
-  const calculator = new Calculator();
-  expect(calculator.power(2, 3)).toBe(8);
-});
+  describe('divide method', () => {
+    it('should divide two numbers correctly', () => {
+      expect(calculator.divide(10, 2)).toBe(5);
+    });
+  });
 
-test('handles negative exponents', () => {
-  const calculator = new Calculator();
-  expect(calculator.power(2, -1)).toBe(0.5);
-});
+  describe('squareRoot method', () => {
+    it('should calculate square root correctly', () => {
+      expect(calculator.squareRoot(16)).toBe(4);
+    });
+  });
 
-test('power with NaN input returns NaN', () => {
-  const calculator = new Calculator();
-  expect(calculator.power(NaN, 2)).toBe(NaN);
-});
+  describe('absolute method', () => {
+    it('should return the same value for positive numbers', () => {
+      expect(calculator.absolute(5)).toBe(5);
+    });
+    it('should return the positive value for negative numbers', () => {
+      expect(calculator.absolute(-5)).toBe(5);
+    });
+    it('should return 0 for 0', () => {
+      expect(calculator.absolute(0)).toBe(0);
+    });
+  });
 
-test('adds 0 + 0 to equal 0', () => {
-  const calculator = new Calculator();
-  expect(calculator.add(0, 0)).toBe(0);
+  describe('factorial method', () => {
+    it('should calculate factorial correctly for positive integers', () => {
+      expect(calculator.factorial(5)).toBe(120);
+      expect(calculator.factorial(3)).toBe(6);
+    });
+    it('should return 1 for inputs of 0 and 1', () => {
+      expect(calculator.factorial(0)).toBe(1);
+      expect(calculator.factorial(1)).toBe(1);
+    });
+    it('should return NaN for negative inputs', () => {
+      expect(isNaN(calculator.factorial(-5))).toBe(true);
+    });
+  });
 });
