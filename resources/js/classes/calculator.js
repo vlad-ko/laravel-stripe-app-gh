@@ -28,6 +28,12 @@ class Calculator {
     absolute(number) {
       return Math.abs(number);
     }
+
+    factorial(n) {
+      if (n < 0) return NaN;
+      if (n <= 1) return 1;
+      return n * this.factorial(n - 1);
+    }
   }
   
   module.exports = Calculator;
