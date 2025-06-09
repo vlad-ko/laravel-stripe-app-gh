@@ -24,6 +24,10 @@ class Calculator {
     squareRoot(number) {
       return Math.sqrt(number);
     }
+
+    absolute(number) {
+      return Math.abs(number);
+    }
   }
   
   module.exports = Calculator;
