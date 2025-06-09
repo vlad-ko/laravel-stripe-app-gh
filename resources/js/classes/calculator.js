@@ -20,6 +20,10 @@ class Calculator {
     power(base, exponent) {
       return Math.pow(base, exponent);
     }
+
+    squareRoot(number) {
+      return Math.sqrt(number);
+    }
   }
   
   module.exports = Calculator;
